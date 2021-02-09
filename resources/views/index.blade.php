@@ -6,6 +6,17 @@
 <head>
     @include('_partials.meta')
     @include('_partials.header')
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWNB5ZSHQ7"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FWNB5ZSHQ7');
+        </script>
+
 </head>
 
 <body>
