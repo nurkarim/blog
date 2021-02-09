@@ -6,8 +6,6 @@
 
 <link rel="shortcut icon" type="image/png" href="">
 <meta name="p:domain_verify" content="f9af85b662cce44b54e98146f7d73d11">
-
-<title>Laradevs bd - Tutorial It Language Site | See Demo Example - laradevsbd.com</title>
 <meta name="description" content="laradevsbd website focuses on all web language and framework tutorial PHP, Laravel, Codeigniter, Nodejs, API, MySQL, AJAX, jQuery, JavaScript, Demo">
 <meta name="keywords" content="laradevsbd of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, HTML, CSS, git, AJAX, bootstrap,  jQuery, JavaScript, Designing, Demo, laradevsbd.">
 <meta name="twitter:image" content="https://www.laradevsbd.com/upload/laradevsbd.png">

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <head>
-    @include('_partials.header')
     @include('_partials.meta')
+    @include('_partials.header')
 </head>
 
 <body>
@@ -162,7 +162,7 @@
         <div class="container">
             <div class="row no-gutters d-flex align-items-center">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="topic-box topic-box-margin">Top Stories</div>
+                    <div class="topic-box topic-box-margin">Headline</div>
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8 col-6">
                     <div class="feeding-text-dark">
@@ -189,7 +189,7 @@
         <div class="container">
             <ul class="news-info-list text-center--md">
                 <li>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>Australia</li>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>Bangladesh</li>
                 <li>
                     <i class="fa fa-calendar" aria-hidden="true"></i><span id="current_date"></span></li>
                 <li>
@@ -206,7 +206,7 @@
             <div class="row tab-space1">
                 <div class="col-lg-6 col-md-12">
                     <div class="img-overlay-70 img-scale-animate mb-2">
-                        <img src="img/news/news1.jpg" alt="news" class="img-fluid width-100">
+                        <img src="{{ asset('public/img/news/news1.jpg') }}" alt="news" class="img-fluid width-100">
                         <div class="mask-content-lg">
                             <div class="topic-box-sm color-cinnabar mb-20">Politics</div>
                             <div class="post-date-light">
@@ -237,7 +237,7 @@
                                         <a href="single-news-2.html">Magnificent Image Of The New Hoover Dam Bridge Taking Shape</a>
                                     </h2>
                                 </div>
-                                <img src="img/news/news2.jpg" alt="news" class="img-fluid width-100">
+                                <img src="{{ asset('public/img/news/news2.jpg') }}" alt="news" class="img-fluid width-100">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
@@ -248,7 +248,7 @@
                                         <a href="single-news-3.html">Magnificent Image shaper dam bridge taking </a>
                                     </h3>
                                 </div>
-                                <img src="img/news/news3.jpg" alt="news" class="img-fluid width-100">
+                                <img src="{{ asset('public/img/news/news3.jpg') }}" alt="news" class="img-fluid width-100">
                             </div>
                         </div>
                         <div class="col-sm-6 col-12">
@@ -259,7 +259,7 @@
                                         <a href="single-news-1.html">The New hoover dam bridge Magnificen Imag.</a>
                                     </h3>
                                 </div>
-                                <img src="img/news/news4.jpg" alt="news" class="img-fluid width-100">
+                                <img src="{{ asset('public/img/news/news4.jpg') }}" alt="news" class="img-fluid width-100">
                             </div>
                         </div>
                     </div>
