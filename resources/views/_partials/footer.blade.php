@@ -25,3 +25,9 @@
 <script src="{{ asset('public/js/ticker.js') }}" type="text/javascript"></script>
 <!-- Custom Js -->
 <script src="{{ asset('public/js/main.js') }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
+<script type="text/javascript">
+    $("img").lazyload({
+        effect : "fadeIn"
+    });
+</script>
