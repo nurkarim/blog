@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\FlagIcon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\LanguageConfig;
 use Illuminate\Support\Facades\File;
@@ -135,6 +137,41 @@ class LanguageController extends Controller
         $language->languageConfig->save();
 
         return redirect()->route('languages.index')->with('success', __('successfully updated'));
+    }
+
+    public function destroy(Language $language)
+    {
+        DB::beginTransaction();
+        try{
+
+        if ($language->id == 1) :
+            return back()->with('error','You can not delete this.');
+        else:
+            $path = base_path('resources/lang/' . $language->code);
+            //delete folder
+            if (File::isDirectory($path)) :
+                File::deleteDirectory($path);
+            endif;
+
+            $langJson = base_path('resources/lang/' . $language->code . '.json');
+
+            //delete phrase file
+            if (file_exists($langJson)) :
+                unlink($langJson);
+            endif;
+
+            $language->delete();
+            $language->languageConfig->delete();
+
+        endif;
+        DB::commit();
+            return back()->with('success','Successfully Deleted.');
+        }catch (QueryException $ex){
+            DB::rollBack();
+            return back()->with('error','Unsuccessfully delete.');
+        }
+
+
     }
 
 }
