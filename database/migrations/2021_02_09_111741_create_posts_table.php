@@ -26,6 +26,7 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('submitted')->default(0);
             $table->tinyInteger('visibility')->default(0);
             $table->tinyInteger('auth_required')->default(0);
+            $table->unsignedInteger('image_id')->nullable();
             $table->tinyInteger('slider')->default(0);
             $table->tinyInteger('slider_order')->default(0);
             $table->tinyInteger('featured')->default(0);
@@ -44,7 +45,6 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('video_id')->nullable();
             $table->string('video_url')->nullable();
             $table->string('video_thumbnail')->nullable();
-            $table->string('image')->nullable();
             $table->double('total_view')->default(0);
             $table->double('total_comment')->default(0);
             $table->integer('view_order')->default(0);

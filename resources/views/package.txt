@@ -1,0 +1,6 @@
+https://github.com/spatie/laravel-feed
+https://github.com/spatie/laravel-sitemap
+https://www.larablocks.com/package/mcamara/laravel-localization
+https://github.com/antonioribeiro/countries
+https://github.com/barryvdh/laravel-translation-manager
+https://medium.com/@sehmbimanvir/laravel-upload-files-to-amazon-s3-a17d013f53ce

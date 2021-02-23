@@ -9,7 +9,7 @@ class CategorySeed extends Seeder
     {
         \App\Category::query()->delete();
         $faker = Faker\Factory::create();
-         for ($i=0;$i<200000;$i++){
+         for ($i=0;$i<10;$i++){
              \App\Category::create([
                  'name'=>$faker->name,
                  'slug'=>$faker->slug,

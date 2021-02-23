@@ -16,6 +16,12 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
+        "laravelcollective/html": "^6.2",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "mcamara/laravel-localization": "^1.6",
+        "pragmarx/countries": "^0.7.2",
+        "spatie/laravel-feed": "^2.7",
+        "spatie/laravel-sitemap": "^5.8",
         "wildside/userstamps": "^2.1"
     },
     "require-dev": {
