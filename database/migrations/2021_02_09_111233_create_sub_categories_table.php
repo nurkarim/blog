@@ -20,6 +20,8 @@ class CreateSubCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('view_order')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();

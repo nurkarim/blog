@@ -11,3 +11,6 @@ Route::post('/mark-as-read', 'HomeController@markNotification')->name('markNotif
 Route::post('/mark-as-delete', 'HomeController@deleteNotification')->name('deleteNotification');
 
 Route::resource('languages','LanguageController');
+Route::resource('categories','CategoryController');
+Route::resource('subcategories','SubCategoryController');
+Route::get('ajaxCategory','SubCategoryController@ajaxCategory')->name('ajaxCategory');

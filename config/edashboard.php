@@ -46,11 +46,11 @@ return [
                     ,
                     [
                         'name'=>'Category',
-                        'url'=>'#',
+                        'route'=>'categories.index',
                     ],
                     [
                         'name'=>'Sub Category',
-                        'url'=>'#',
+                        'route'=>'subcategories.index',
                     ]
                 ],
             ],
