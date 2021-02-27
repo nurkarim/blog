@@ -39,11 +39,9 @@ class CategoryController extends Controller
                 'language'      => 'required'
             ])->validate();
 
-            $category                   = new Category();
-
-            $category->name    = $request->name;
-            $category->language         = $request->language;
-
+            $category            = new Category();
+            $category->name     = $request->name;
+            $category->language = $request->language;
             if ($request->slug != null) :
                 $category->slug = $request->slug;
             else :

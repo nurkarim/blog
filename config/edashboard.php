@@ -21,7 +21,7 @@ return [
                 'active'=>'active',
             ],
             [
-                'name'=>"Post",
+                'name'=>"Posts",
                 'url'=>"#",
                 'icon'=>"fas fa-user-alt",
                 'icon_color'=>"",
@@ -32,11 +32,11 @@ return [
                 'badge_number'=>3,
                 'submenu'=>[
                     [
-                        'name'=>'Add post',
-                        'url'=>'#',
+                        'name'=>'Articles',
+                        'route'=>'posts.index',
                     ],
                     [
-                        'name'=>'Add Video Post',
+                        'name'=>'Video Post',
                         'url'=>'#',
                     ],
                     [
