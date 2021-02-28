@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\PostRequest;
+use App\Models\Language;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
@@ -30,7 +31,10 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories=Category::query()->where('language',App::getLocale());
+        $categories=Category::query()->where('language',App::getLocale())->pluck('name','id');
+        $languages=Language::query()->pluck('name','code');
+
+        return view('back.post.create',compact('categories','languages'));
     }
 
     public function store(PostRequest $request)

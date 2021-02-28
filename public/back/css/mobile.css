@@ -36,3 +36,7 @@
 @media (min-width: 1200px) {
 
 }
+
+.selected {
+    border: 3px solid #5969ff;
+}

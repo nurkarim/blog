@@ -4,9 +4,9 @@
         <div class="card">
 
             <div class="card-header">
-                <h3 class="card-title">Sub Categories</h3>
+                <h3 class="card-title">Articles</h3>
                 <div class="float-right">
-                    <button type="button" data-toggle="modal" data-target="#modal" onclick="loadModal('{{ route("subcategories.create") }}')"  class="btn btn-primary btn-addon">Add New</button>
+                    <a href="{{ route('posts.create') }}"  class="btn btn-primary btn-addon">Add New</a>
 
                 </div>
             </div>
