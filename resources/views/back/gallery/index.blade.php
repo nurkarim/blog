@@ -26,36 +26,8 @@
     </div>
 
     <div class="col-md-8">
-        <div class="row" id="media-library"><div class="col-md-2" id="row_9">
+        <div class="row" id="media-library">
 
-                <img id="9" src="http://amarsomoy24.com/public/images/20201207231446_thumbnail_100x100_3.webp" alt="image" class="image img-responsive img-thumbnail selected">
-
-            </div>
-            <div class="col-md-2" id="row_8">
-
-                <img id="8" src="http://amarsomoy24.com/public/images/20201207230717_thumbnail_100x100_35.webp" alt="image" class="image img-responsive img-thumbnail">
-
-            </div>
-            <div class="col-md-2" id="row_7">
-
-                <img id="7" src="http://amarsomoy24.com/public/images/20201206123120_thumbnail_100x100_19.webp" alt="image" class="image img-responsive img-thumbnail">
-
-            </div>
-            <div class="col-md-2" id="row_5">
-
-                <img id="5" src="http://amarsomoy24.com/public/images/20201206010659_thumbnail_100x100_30.webp" alt="image" class="image img-responsive img-thumbnail">
-
-            </div>
-            <div class="col-md-2" id="row_4">
-
-                <img id="4" src="http://amarsomoy24.com/public/images/20201206005022_thumbnail_100x100_45.webp" alt="image" class="image img-responsive img-thumbnail">
-
-            </div>
-            <div class="col-md-2" id="row_1">
-
-                <img id="1" src="http://amarsomoy24.com/public/default-image/default-100x100.png" width="200" height="200" alt="image" class="image img-responsive img-thumbnail">
-
-            </div>
         </div>
         <input type="hidden" id="count" value="1">
 
@@ -77,7 +49,7 @@
 
     $(document).ready(function (e) {
         var image_page_no = 1;
-        url = "http://amarsomoy24.com/gallery/fetch-image";
+        url = "{{ route('gallery.fetch') }}";
         $(document).on('click', '.btn-image-modal', function () {
             window.value = $(this).attr('data-id');
             var formData = {
