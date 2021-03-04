@@ -155,7 +155,7 @@
                                     <div class="form-group">
                                         <div class="form-group text-center">
                                             <img src="http://amarsomoy24.com/public/default-image/default-100x100.png" id="image_preview" width="200" height="200" alt="image" class="img-responsive img-thumbnail">
-                                            <button type="button"  class="btn btn-primary" data-id="1" onclick="loadModal('{{ route('galleries.index') }}')" data-toggle="modal" data-target="#modal">Add Image</button>
+                                            <button type="button"  class="btn btn-primary btn-image-modal" data-id="1"  data-toggle="modal" data-target="#media-gallery">Add Image</button>
                                             <input id="image_id" name="image_id" type="hidden" class="form-control">
                                         </div>
                                     </div>
@@ -220,6 +220,6 @@
     {!! Form::close() !!}
 @endsection
 @section('js')
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js" integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ==" crossorigin="anonymous"></script>
+    @include('back.gallery.index')
 @endsection

@@ -18,7 +18,7 @@
 <script src="{{ asset('public/back/js/adminlte.js') }}"></script>
 <script src="{{ asset('public/back/js/demo.js') }}"></script>
 <script src="{{ asset('public/back/js/pages/dashboard.js') }}"></script>
-
+<script src="{{ asset('public/back/js/ajax-modal.js') }}" type="text/javascript"></script>
 
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>

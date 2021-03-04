@@ -414,4 +414,52 @@ class Helper
             ],
         ];
     }
+
+    function basePath($image)
+    {
+
+        if (!blank($image)):
+            if ($image->disk    == 'local') :
+
+                //return public_path();
+
+                if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                    return url('/');
+                }else{
+                    return url('/public');
+                }
+
+
+            else :
+                return "https://s3." . config('filesystems.disks.s3.region') . ".amazonaws.com/" . config('filesystems.disks.s3.bucket');
+            endif;
+        endif;
+
+    }
+
+    function isFileExist($item  = '', $file = '')
+    {
+        if (!blank($item) and !blank($file)) :
+
+            if ($item->disk     == 'local') :
+
+                if (strpos(php_sapi_name(), 'cli') !== false) {
+                    $file = $file;
+                }else{
+                    $file = 'public/'.$file;
+                }
+
+                if (File::exists($file)) :
+                    return true;
+                endif;
+            else :
+
+                if (Storage::disk('s3')->exists($file)) :
+                    return true;
+                endif;
+            endif;
+        endif;
+
+        return false;
+    }
 }

@@ -17,3 +17,4 @@ Route::get('ajaxCategory','SubCategoryController@ajaxCategory')->name('ajaxCateg
 Route::resource('posts','PostController');
 Route::resource('galleries','GalleryController');
 Route::get('gallery/fetch-image','GalleryController@fetchImage')->name('gallery.fetch');
+Route::get('gallery/fetch-delete','GalleryController@delete')->name('galleries-destroy');

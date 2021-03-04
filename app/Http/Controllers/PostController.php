@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CustomClasses\SettingsHelper;
 use App\Http\Requests\PostRequest;
 use App\Models\Language;
 use App\Post;
