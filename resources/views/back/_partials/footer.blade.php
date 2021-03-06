@@ -14,9 +14,11 @@
 <script src="{{ url('public/back') }}/plugins/summernote/summernote-bs4.min.js"></script>
 
 <script src="{{ url('public/back') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
 <script src="{{ asset('public/back/js/adminlte.js') }}"></script>
 <script src="{{ asset('public/back/js/demo.js') }}"></script>
 <script src="{{ asset('public/back/js/pages/dashboard.js') }}"></script>
+
 <script src="{{ asset('public/back/js/ajax-modal.js') }}" type="text/javascript"></script>
 
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -24,3 +26,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="{{ url('public/back') }}/css/tagsinput.css">
+<script src="{{ url('public/back/js') }}/tagsinput.js"></script>
+<script src="{{ url('public/back/js') }}/notify.js"></script>
+<!-- summernote -->
+

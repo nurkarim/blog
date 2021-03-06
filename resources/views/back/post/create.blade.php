@@ -1,6 +1,14 @@
 @extends('back.app')
 @section('content')
+
     {!! Form::open(['url'=>URL::to('posts'),'id'=>'myForm','files'=>true]) !!}
+
+    <?php
+    $token = md5(session_id() . time());
+    Session::put('_csrf_token',$token);
+    ?>
+    <input type="hidden" name="_csrf_token" value="<?php echo $token ?>" />
+
     <div class="col-md-12">
         <div class="card">
 
@@ -28,7 +36,7 @@
                             <label class="control-label">Subcategory
                                 <star>*</star>
                             </label>
-                            {!! Form::select('category_id',[],null,['class'=>'form-control','required','id'=>'category_id']) !!}
+                            {!! Form::select('sub_category_id',[],null,['class'=>'form-control','required','id'=>'sub_category_id']) !!}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -155,7 +163,7 @@
                                     <div class="form-group">
                                         <div class="form-group text-center">
                                             <img src="{{ url('/') }}/public/default-image/default-100x100.png" id="image_preview" width="200" height="200" alt="image" class="img-responsive img-thumbnail">
-                                            <button type="button"  class="btn btn-primary btn-image-modal" data-id="1"  data-toggle="modal" data-target="#media-gallery" onclick="loadModal1('{{ route("galleries.index") }}')">Add Image</button>
+                                            <button type="button"  class="btn btn-primary btn-image-modal" data-id="1"  data-toggle="modal" data-target="#media-gallery">Add Image</button>
                                             <input id="image_id" name="image_id" type="hidden" class="form-control">
                                         </div>
                                     </div>
@@ -167,9 +175,8 @@
                     <div class="row p-l-15">
                         <div class="col-12">
                             <label for="post_content" class="col-form-label">Content*</label>
-                            <textarea class="form-control">
-
-                            </textarea>
+                            <textarea name="content" value="" id="summernote"
+                                      cols="30" rows="5" required></textarea>
                         </div>
                     </div>
                     <!-- tinemcey end -->
@@ -200,7 +207,7 @@
                         <div class="form-group">
                             <label for="post_tags" class="col-form-label">Tags</label>
 
-                            <div class="bootstrap-tagsinput"><input type="text" name="tags" placeholder=""></div><input id="post_tags" name="tags" type="text" value="" data-role="tagsinput" class="form-control sr-only">
+                            <div class="bootstrap-tagsinput"><input type="text" name="tags[]" placeholder="" class="tags"></div>
 
                         </div>
                     </div>
@@ -213,13 +220,99 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row  p-20 m-b-20">
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" id="post_status" name="status" required="">
+                                <option value="1">Published</option>
+                                <option value="0">Draft</option>
+                                <option value="2">Scheduled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 divScheduleDate" style="display: none;">
+                        <label for="scheduled_date">Schedule Date</label>
+                        <div class="input-group">
+                            <label class="input-group-text" for="scheduled_date"><i class="fa fa-calendar-alt"></i></label>
+                            <input type="date" class="form-control date flatpickr-input" id="scheduled_date" name="scheduled_date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
         </div>
+    <input type="hidden" value="article" name="type">
 
     {!! Form::close() !!}
 @endsection
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js" integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ==" crossorigin="anonymous"></script>
+
     @include('back.gallery.index')
+
+    <script src="{{ url('public/back/js') }}/post.js"></script>
+
+    <script>
+        $('#summernote').summernote();
+        $(document).ready(function() {
+            $('.tags').tagsinput({
+                maxTags: 5,
+            });
+        });
+
+        $(document).on('change', '#language_id', function () {
+            var id = $('#language_id').val();
+            const url = '{{ route('ajaxCategory') }}';
+            $.ajax({
+                type: 'GET',
+                async: false,
+                url: url,
+                data: {'language': id},
+                dataType: "json",
+                success: function (data) {
+                    $("#category_id").empty();
+                    $("#category_id").append('<option value="">Select One</option>');
+                    $.each(data, function (i, value) {
+                        $("#category_id").append('<option value=' + value.id + '>' + value.name + '</option>');
+                    });
+                },
+                error: function (data) {
+
+                }
+            });
+
+        });
+
+        $(document).on('change', '#category_id', function () {
+            var id = $('#category_id').val();
+            const url = '{{ route('ajaxSubCategory') }}';
+            $.ajax({
+                type: 'GET',
+                async: false,
+                url: url,
+                data: {'category_id': id},
+                dataType: "json",
+                success: function (data) {
+                    $("#sub_category_id").empty();
+                    $("#sub_category_id").append('<option value="">Select One</option>');
+                    $.each(data, function (i, value) {
+                        $("#sub_category_id").append('<option value=' + value.id + '>' + value.name + '</option>');
+                    });
+                },
+                error: function (data) {
+
+                }
+            });
+
+        });
+
+
+    </script>
+
 @endsection

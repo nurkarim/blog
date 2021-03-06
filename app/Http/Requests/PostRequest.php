@@ -17,11 +17,12 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            '_csrf_token'   =>['required',new PreventDuplicateRule()],
-            'category_id'   =>['required|min:1|numeric|exists:categories'],
-            'title'         =>['required|string|min:5'],
+            '_csrf_token'   =>['required'],
+            'category_id'   =>'required',
+            'title'         =>'required|string|min:5|unique:posts',
             'slug'          =>'nullable|min:2|unique:posts|regex:/^\S*$/u',
-            'content'       =>['required|min:10'],
+            'content'       =>'required|min:10',
+            'sub_category_id'=>'required',
         ];
     }
 
@@ -30,6 +31,7 @@ class PostRequest extends FormRequest
         return [
             'category_id' => 'Category',
             'content'     => 'Post description',
+            'sub_category_id'=> 'Sub Category',
         ];
     }
 

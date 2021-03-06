@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CustomClasses\ReturnMessage;
 use App\CustomClasses\SettingsHelper;
 use App\Http\Requests\PostRequest;
 use App\Models\Language;
+use App\Models\Tag;
 use App\Post;
+use App\Repositories\PostRepository;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\App;
@@ -34,14 +38,24 @@ class PostController extends Controller
     {
         $categories=Category::query()->where('language',App::getLocale())->pluck('name','id');
         $languages=Language::query()->pluck('name','code');
-
         return view('back.post.create',compact('categories','languages'));
     }
 
-    public function store(PostRequest $request)
+    public function store(PostRequest $request,PostRepository $postRepository)
     {
-        return $this->model->create($request->all());
+        try {
+            $save=$postRepository->create($request);
+            if ($save){
+                return ReturnMessage::insertSuccess();
+            }
+            return ReturnMessage::somethingWrong();
+        }catch (QueryException $e){
+            return $e->getMessage();
+            return ReturnMessage::somethingWrong();
+        }
     }
+
+
 
     public function show($id)
     {

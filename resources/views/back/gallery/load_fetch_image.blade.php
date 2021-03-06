@@ -45,7 +45,7 @@
     $(document).ready(function (e) {
         var image_page_no = 1;
         url = "{{ route('gallery.fetch') }}";
-
+        alert($(this).attr('data-id'));
         function loadImage(){
             window.value = $(this).attr('data-id');
             var formData = {
@@ -169,7 +169,6 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    console.log(data);
                     if (data[0].status == 'success') {
                         $("#media-library").prepend(
                             @if(\App\CustomClasses\SettingsHelper::settingHelper('default_storage') =='local')
@@ -202,6 +201,7 @@
         }));
 
         var selected_image_id = '';
+        var selected_image_src = '';
 
         $(document).on('click', '.image', function () {
             $('.image').removeClass('selected');
@@ -213,7 +213,7 @@
         });
 
         $("#selectImage").on('click', function () {
-            // alert(window.value);
+            //alert(window.value);
             if (window.value == 1) {
                 $('#image_id').val(selected_image_id);
                 $('#image_preview').attr('src', selected_image_src);

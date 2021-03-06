@@ -41,7 +41,7 @@ class CreatePostsTable extends Migration
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
             $table->json('tag_id')->nullable();
-            $table->text('scheduled_date')->nullable();
+            $table->date('scheduled_date')->nullable();
             $table->unsignedInteger('video_id')->nullable();
             $table->string('video_url')->nullable();
             $table->string('video_thumbnail')->nullable();

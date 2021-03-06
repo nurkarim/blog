@@ -14,6 +14,7 @@ Route::resource('languages','LanguageController');
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubCategoryController');
 Route::get('ajaxCategory','SubCategoryController@ajaxCategory')->name('ajaxCategory');
+Route::get('ajaxSubCategory','SubCategoryController@ajaxSubCategory')->name('ajaxSubCategory');
 Route::resource('posts','PostController');
 Route::resource('galleries','GalleryController');
 Route::get('gallery/fetch-image','GalleryController@fetchImage')->name('gallery.fetch');

@@ -272,5 +272,156 @@ class GalleryController extends Controller
         echo json_encode($data);
     }
 
+    public function videoUpload(Request $request){
 
+        $requestVideo           = $request->file('video');
+        $fileType               = $requestVideo->getClientOriginalExtension();
+        $videoName_original     = date('YmdHis') . "_original_" . rand(1, 50);
+
+
+        if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+            $directory              = 'videos/';
+        else:
+            $directory              = 'public/videos/';
+        endif;
+
+        $originalThumbUrl       = $directory . 'thumbnail/' . $videoName_original. '.jpg';
+        $originalVideoUrl       = $directory . $videoName_original. '.' . $fileType;
+
+        $video                  = new Video();
+        $video->video_name      = $videoName_original;
+        $video->video_thumbnail = str_replace("public/","", $originalThumbUrl);
+        $video->video_type      = $fileType;
+        $video->original        = str_replace("public/","",$originalVideoUrl);
+
+        try {
+            $saveOriginal           = $requestVideo->move($directory, $originalVideoUrl);
+            if(settingHelper('ffmpeg_status') == 1){
+                $cmdForThumbnail        = "ffmpeg -i $requestVideo -ss 00:00:03.000 -vframes 1 $originalThumbUrl";
+                exec($cmdForThumbnail);
+                // save to public/video directory
+                $video->video_thumbnail = str_replace("public/","", $originalThumbUrl);
+            } else {
+                $video->video_thumbnail = '';
+            }
+
+            $video->disk            = settingHelper('default_storage');
+            $video->save();
+
+            $video = Video::latest()->first();
+
+            if(settingHelper('ffmpeg_status') == 1):
+
+                if(settingHelper('default_storage') =='local') :
+                    if (File::exists($video->video_thumbnail)) :
+
+                        $contents   = \File::get($video->video_thumbnail);
+                        return Response()->json([$video, $video_thumbnail]);
+                        $videoThumb = Image::make($contents)->fit(200, 200)->save($originalThumbUrl);
+
+                    endif;
+                endif;
+
+                if(settingHelper('default_storage') =='s3') :
+                    if (File::exists($video->video_thumbnail)) :
+
+                        $contents   = \File::get($video->video_thumbnail);
+                        $videoThumb = Image::make($contents)->fit(200, 200)->stream();
+                        Storage::disk('s3')->put($originalThumbUrl, $videoThumb);
+                        unlink($video->video_thumbnail);
+
+                    endif;
+                endif;
+
+            endif;
+
+            $cron               = new Cron();
+            $cron->cron_for     ='video_convert';
+            $cron->video_id     = $video->id;
+            $cron->save();
+
+            if($video->video_thumbnail == '' || !file_exists($video->video_thumbnail)){
+                if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+                    $video_thumbnail = 'default-image/default-video-100x100.png';
+                else:
+                    $video_thumbnail = 'public/default-image/default-video-100x100.png';
+                endif;
+            }else{
+                if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+                    $video_thumbnail = $video->video_thumbnail;
+                else:
+                    $video_thumbnail = 'public'.'/'.$video->video_thumbnail;
+                endif;
+            }
+
+            return Response()->json([$video, $video_thumbnail]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function deleteVideo(Request $request){
+        $video          = Video::find($request->row_id);
+        if($video->disk =='s3') :
+
+            Storage::disk('s3')->delete($video->original);
+            Storage::disk('s3')->delete($video->p_144);
+            Storage::disk('s3')->delete($video->p_240);
+            Storage::disk('s3')->delete($video->p_360);
+            Storage::disk('s3')->delete($video->p_480);
+
+            Storage::disk('s3')->delete($video->video_thumbnail);
+
+            $video->delete();
+            $data['status']     = "success";
+            $data['message']    =  __('successfully_deleted');
+
+
+        elseif($video->disk =='local'):
+
+            //public path
+            if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                $path = '';
+            }else{
+                $path = 'public/';
+            }
+
+            if ($video->count() > 0) :
+                if (File::exists($path.$video->original) && $video->original != "") :
+                    unlink($path.$video->original);
+                endif;
+                if (File::exists($path.$video->p_144) && $video->p_144 != "") :
+                    unlink($path.$video->p_144);
+                endif;
+                if (File::exists($path.$video->p_240) && $video->p_240 != "") :
+                    unlink($path.$video->p_240);
+                endif;
+                if (File::exists($path.$video->p_360) && $video->p_360 != "") :
+                    unlink($path.$video->p_360);
+                endif;
+                if (File::exists($path.$video->p_480) && $video->p_480 != "") :
+                    unlink($path.$video->p_480);
+                endif;
+                if (File::exists($path.$video->video_thumbnail) && $video->video_thumbnail != "") :
+                    unlink($path.$video->video_thumbnail);
+                endif;
+                $video->delete();
+
+                $data['status']     = "success";
+                $data['message']    =  __('successfully_deleted');
+            else :
+                $data['status']     = "error";
+                $data['message']    = __('not_found');
+            endif;
+        endif;
+
+        echo json_encode($data);
+    }
+
+    public function fetchVideo(){
+        $videos         = Video::orderBy('id','DESC')->paginate(24);
+
+        return view('gallery::ajax-videos',compact('videos'));
+
+    }
 }

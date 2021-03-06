@@ -35,6 +35,16 @@ class SubCategoryController extends Controller
         endif;
     }
 
+    public function ajaxSubCategory(Request $request)
+    {
+        if ($request->ajax()):
+            return SubCategory::query()->where('category_id',$request->category_id)->get([
+                'name',
+                'id'
+            ]);
+        endif;
+    }
+
     public function edit($id)
     {
         $subCategory=SubCategory::find($id);
