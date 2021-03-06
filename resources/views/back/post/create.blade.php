@@ -154,8 +154,8 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <div class="form-group text-center">
-                                            <img src="http://amarsomoy24.com/public/default-image/default-100x100.png" id="image_preview" width="200" height="200" alt="image" class="img-responsive img-thumbnail">
-                                            <button type="button"  class="btn btn-primary btn-image-modal" data-id="1"  data-toggle="modal" data-target="#media-gallery">Add Image</button>
+                                            <img src="{{ url('/') }}/public/default-image/default-100x100.png" id="image_preview" width="200" height="200" alt="image" class="img-responsive img-thumbnail">
+                                            <button type="button"  class="btn btn-primary btn-image-modal" data-id="1"  data-toggle="modal" data-target="#media-gallery" onclick="loadModal1('{{ route("galleries.index") }}')">Add Image</button>
                                             <input id="image_id" name="image_id" type="hidden" class="form-control">
                                         </div>
                                     </div>

@@ -15,7 +15,7 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        return view('back.gallery.index');
+        return view('back.gallery.load_fetch_image');
     }
 
     public function fetchImage(Request $request)
@@ -183,5 +183,94 @@ class GalleryController extends Controller
             return Response()->json($data);
         endif;
     }
+
+    public function delete(Request $request){
+
+        $image=GalleryImage::find($request->row_id);
+        if($image->disk =='s3') :
+            if (Storage::disk('s3')->exists($image->original_image) && !blank($image->original_image)) :
+                Storage::disk('s3')->delete($image->original_image);
+            endif;
+            if (Storage::disk('s3')->exists($image->og_image) && !blank($image->og_image)) :
+                Storage::disk('s3')->delete($image->og_image);
+            endif;
+            if (Storage::disk('s3')->exists($image->thumbnail) && !blank($image->thumbnail)) :
+                Storage::disk('s3')->delete($image->thumbnail);
+            endif;
+            if (Storage::disk('s3')->exists($image->big_image) && !blank($image->big_image)) :
+                Storage::disk('s3')->delete($image->big_image);
+            endif;
+            if (Storage::disk('s3')->exists($image->big_image_two) && !blank($image->big_image_two)) :
+                Storage::disk('s3')->delete($image->big_image_two);
+            endif;
+            if (Storage::disk('s3')->exists($image->medium_image) && !blank($image->medium_image)) :
+                Storage::disk('s3')->delete($image->medium_image);
+            endif;
+            if (Storage::disk('s3')->exists($image->medium_image_two) && !blank($image->medium_image_two)) :
+                Storage::disk('s3')->delete($image->medium_image_two);
+            endif;
+            if (Storage::disk('s3')->exists($image->medium_image_three) && !blank($image->medium_image_three)) :
+                Storage::disk('s3')->delete($image->medium_image_three);
+            endif;
+            if (Storage::disk('s3')->exists($image->small_image) && !blank($image->small_image)) :
+                Storage::disk('s3')->delete($image->small_image);
+            endif;
+
+            $image->delete();
+
+            $data['status']         = "success";
+            $data['message']        =  __('successfully_deleted');
+
+        elseif($image->disk =='local'):
+            if ($image->count() > 0) :
+
+                //public path
+                if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                    $path = '';
+                }else{
+                    $path = 'public/';
+                }
+
+                if (File::exists($path.$image->original_image) && !blank($image->original_image)) :
+                    unlink($path.$image->original_image);
+                endif;
+                if (File::exists($path.$image->og_image) && !blank($image->og_image)) :
+                    unlink($path.$image->og_image);
+                endif;
+                if (File::exists($path.$image->thumbnail) && !blank($image->thumbnail)) :
+                    unlink($path.$image->thumbnail);
+                endif;
+                if (File::exists($path.$image->big_image) && !blank($image->big_image)) :
+                    unlink($path.$image->big_image);
+                endif;
+                if (File::exists($path.$image->big_image_two) && !blank($image->big_image_two)) :
+                    unlink($path.$image->big_image_two);
+                endif;
+                if (File::exists($path.$image->medium_image) && !blank($image->medium_image)) :
+                    unlink($path.$image->medium_image);
+                endif;
+                if (File::exists($path.$image->medium_image_two) && !blank($image->medium_image_two)) :
+                    unlink($path.$image->medium_image_two);
+                endif;
+                if (File::exists($path.$image->medium_image_three) && !blank($image->medium_image_three)) :
+                    unlink($path.$image->medium_image_three);
+                endif;
+                if (File::exists($path.$image->small_image)) :
+                    unlink($path.$image->small_image);
+                endif;
+                $image->delete();
+
+                $data['status']     = "success";
+                $data['message']    =  __('successfully_deleted');
+            else :
+                $data['status']     = "error";
+                $data['message']    = __('not_found');
+            endif;
+
+        endif;
+
+        echo json_encode($data);
+    }
+
 
 }

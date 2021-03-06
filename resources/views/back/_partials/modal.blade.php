@@ -15,7 +15,7 @@
                 </button>
             </div>
             <div class="modal-body" id="body-content">
-                <img src="{{asset('public/images/loading.gif')}}" alt="Loading" title="Loading" height="50px">
+{{--                <img src="{{asset('public/images/loading.gif')}}" alt="Loading" title="Loading" height="50px">--}}
 
             </div>
         </div>
