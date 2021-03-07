@@ -17,7 +17,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            '_csrf_token'   =>['required'],
+            '_csrf_token'   =>['required',new PreventDuplicateRule()],
             'category_id'   =>'required',
             'title'         =>'required|string|min:5|unique:posts',
             'slug'          =>'nullable|min:2|unique:posts|regex:/^\S*$/u',
