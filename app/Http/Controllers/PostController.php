@@ -116,4 +116,11 @@ class PostController extends Controller
             return ReturnMessage::somethingWrong();
         }
     }
+
+    public function videoPostCreate()
+    {
+        $categories=Category::query()->where('language',App::getLocale())->pluck('name','id');
+        $languages=Language::query()->pluck('name','code');
+        return view('back.post.video_post',compact('categories','languages'));
+    }
 }

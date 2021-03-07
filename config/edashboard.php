@@ -37,7 +37,7 @@ return [
                     ],
                     [
                         'name'=>'Video Post',
-                        'url'=>'#',
+                        'route'=>'video.post',
                     ],
                     [
                         'name'=>'Pending Post',

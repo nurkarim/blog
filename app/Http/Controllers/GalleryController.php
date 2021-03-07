@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\CustomClasses\SettingsHelper;
+use App\Models\CronJob;
 use App\Models\GalleryImage;
+use App\Models\Video;
 use Aws\S3\Exception\S3Exception as S3;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -277,9 +279,9 @@ class GalleryController extends Controller
         $requestVideo           = $request->file('video');
         $fileType               = $requestVideo->getClientOriginalExtension();
         $videoName_original     = date('YmdHis') . "_original_" . rand(1, 50);
+        $video_thumbnail = 'default-image/default-video-100x100.png';
 
-
-        if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+        if (strpos(php_sapi_name(), 'cli') !== false || SettingsHelper::settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
             $directory              = 'videos/';
         else:
             $directory              = 'public/videos/';
@@ -296,7 +298,7 @@ class GalleryController extends Controller
 
         try {
             $saveOriginal           = $requestVideo->move($directory, $originalVideoUrl);
-            if(settingHelper('ffmpeg_status') == 1){
+            if(SettingsHelper::settingHelper('ffmpeg_status') == 1){
                 $cmdForThumbnail        = "ffmpeg -i $requestVideo -ss 00:00:03.000 -vframes 1 $originalThumbUrl";
                 exec($cmdForThumbnail);
                 // save to public/video directory
@@ -305,27 +307,27 @@ class GalleryController extends Controller
                 $video->video_thumbnail = '';
             }
 
-            $video->disk            = settingHelper('default_storage');
+            $video->disk            = SettingsHelper::settingHelper('default_storage');
             $video->save();
 
-            $video = Video::latest()->first();
+            $video = Video::query()->latest()->first();
 
-            if(settingHelper('ffmpeg_status') == 1):
+            if(SettingsHelper::settingHelper('ffmpeg_status') == 1):
 
-                if(settingHelper('default_storage') =='local') :
+                if(SettingsHelper::settingHelper('default_storage') =='local') :
                     if (File::exists($video->video_thumbnail)) :
 
-                        $contents   = \File::get($video->video_thumbnail);
-                        return Response()->json([$video, $video_thumbnail]);
+                        $contents   = File::get($video->video_thumbnail);
                         $videoThumb = Image::make($contents)->fit(200, 200)->save($originalThumbUrl);
+                        return Response()->json([$video, $video_thumbnail]);
 
                     endif;
                 endif;
 
-                if(settingHelper('default_storage') =='s3') :
+                if(SettingsHelper::settingHelper('default_storage') =='s3') :
                     if (File::exists($video->video_thumbnail)) :
 
-                        $contents   = \File::get($video->video_thumbnail);
+                        $contents   = File::get($video->video_thumbnail);
                         $videoThumb = Image::make($contents)->fit(200, 200)->stream();
                         Storage::disk('s3')->put($originalThumbUrl, $videoThumb);
                         unlink($video->video_thumbnail);
@@ -335,19 +337,19 @@ class GalleryController extends Controller
 
             endif;
 
-            $cron               = new Cron();
+            $cron               = new CronJob();
             $cron->cron_for     ='video_convert';
             $cron->video_id     = $video->id;
             $cron->save();
 
             if($video->video_thumbnail == '' || !file_exists($video->video_thumbnail)){
-                if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+                if (strpos(php_sapi_name(), 'cli') !== false || SettingsHelper::settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
                     $video_thumbnail = 'default-image/default-video-100x100.png';
                 else:
                     $video_thumbnail = 'public/default-image/default-video-100x100.png';
                 endif;
             }else{
-                if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+                if (strpos(php_sapi_name(), 'cli') !== false || SettingsHelper::settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
                     $video_thumbnail = $video->video_thumbnail;
                 else:
                     $video_thumbnail = 'public'.'/'.$video->video_thumbnail;
@@ -419,9 +421,8 @@ class GalleryController extends Controller
     }
 
     public function fetchVideo(){
-        $videos         = Video::orderBy('id','DESC')->paginate(24);
-
-        return view('gallery::ajax-videos',compact('videos'));
+        $videos         = Video::query()->orderBy('id','DESC')->paginate(24);
+        return view('back.gallery.ajax_videos',compact('videos'));
 
     }
 }
