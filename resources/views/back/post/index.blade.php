@@ -16,15 +16,16 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Image</th>
                             <th>Language</th>
                             <th>Category</th>
-                            <th>Title</th>
-                            <th>Slug</th>
-                            <th>Status</th>
+                            <th>Post</th>
                             <th>Post Type</th>
                             <th>Post By</th>
                             <th>Visibility</th>
                             <th>View</th>
+                            <th>Comment</th>
+                            <th>Modify At</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -32,16 +33,29 @@
                         <?php $i=0;  ?>
                         @foreach($data as $value)
                             <tr>
-                                <td>{{++$i}}</td>
-                                <td>{{$value->language}}</td>
-                                <td>{{@$value->category->name}}</td>
-                                <td>{{$value->title}}</td>
-                                <td>{{$value->slug}}</td>
-                                <td>@if($value->status==0) Disable @else Enable @endif</td>
-                                <td>{{$value->updated_at}}</td>
+                                <td>{{ ++$i }}</td>
                                 <td>
-                                    <button type="button"   data-toggle="modal" data-target="#modal" onclick="loadModal('{{route('subcategories.edit',$value->id)}}')"  class="btn btn-info btn-xs"><i class="fa fa-edit"></i></button>
-                                    {!! Form::open(['url' => ['subcategories', $value->id],'method'=>'DELETE','style'=>'display:inline;']) !!}
+                                    <div class="post-image">
+                                        <img src="@if(isset($value->imageGallery)) {{ url('public') }}/{{$value->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" width="200" height="200" alt="image" class="img-responsive img-thumbnail">
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ @$value->languageName->name }}
+                                </td>
+                                <td>{{ @$value->category->name }}</td>
+                                <td>   {{ $value->title }}</td>
+                                <td>{{ $value->post_type }}</td>
+                                <td>{{ @$value->user->name }}</td>
+                                <td>
+                                    @if($value->status==1) <label class="badge badge-success">Active</label> @else <label class="badge badge-danger">Inactive</label> @endif <br>
+                                    @if($value->visibility==0) <i class="fa fa-lock"></i> @else <i class="fa fa-eye"></i> @endif
+                                </td>
+                                <td class="text-center">{{ $value->total_view }}</td>
+                                <td class="text-center">{{ $value->total_comment }}</td>
+                                <td>{{ $value->updated_at }}</td>
+                                <td>
+                                    <a href="{{route('posts.edit',$value->id)}}"    class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a>
+                                    {!! Form::open(['url' => ['posts', $value->id],'method'=>'DELETE','style'=>'display:inline;']) !!}
                                     <button onclick="return deleteConfirm()" type="submit"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                                     {!! Form::close() !!}
                                 </td>

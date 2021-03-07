@@ -44,3 +44,12 @@
 label{
     font-weight: 400!important;
 }
+body {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #71748d;
+    background-color: #efeff6;
+    -webkit-font-smoothing: antialiased;
+}

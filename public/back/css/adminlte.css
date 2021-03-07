@@ -32911,4 +32911,18 @@ a.text-muted:hover {
 /*# sourceMappingURL=adminlte.css.map */
 
 
+.post-image {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    float: left;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
 
+.table td, .table th {
+    padding: 10px;
+    vertical-align: middle;
+    border-top: 1px solid #e6e6f2;
+    font-weight: normal;
+}
