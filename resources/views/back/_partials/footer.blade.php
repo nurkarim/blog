@@ -29,5 +29,6 @@
 <link rel="stylesheet" href="{{ url('public/back') }}/css/tagsinput.css">
 <script src="{{ url('public/back/js') }}/tagsinput.js"></script>
 <script src="{{ url('public/back/js') }}/notify.js"></script>
+<script src="{{ url('public/back/js') }}/custom.js"></script>
 <!-- summernote -->
 

@@ -18,4 +18,4 @@
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ url('public/back') }}/plugins/summernote/summernote-bs4.min.css">
-<input type="hiddem" id="#url" value="{{ url('/') }}">
+<input type="hidden" id="#url" value="{{ url('/') }}">

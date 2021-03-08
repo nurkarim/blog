@@ -43,7 +43,8 @@ class CreatePostsTable extends Migration
             $table->json('tag_id')->nullable();
             $table->date('scheduled_date')->nullable();
             $table->unsignedInteger('video_id')->nullable();
-            $table->tinyInteger('video_url_type')->nullable();
+            $table->string('video_url_type')->nullable();
+            $table->integer('video_thumbnail_id')->nullable();
             $table->string('video_url')->nullable();
             $table->string('video_thumbnail')->nullable();
             $table->double('total_view')->default(0);

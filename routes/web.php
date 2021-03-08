@@ -17,7 +17,9 @@ Route::get('ajaxCategory','SubCategoryController@ajaxCategory')->name('ajaxCateg
 Route::get('ajaxSubCategory','SubCategoryController@ajaxSubCategory')->name('ajaxSubCategory');
 Route::resource('posts','PostController');
 
-Route::get('video/post/create','PostController@videoPostCreate')->name('video.post');
+Route::get('post/create/video','PostController@videoPostCreate')->name('video.post');
+Route::get('post/edit/video/{id}','PostController@videoPostEdit')->name('video.postEdit');
+Route::get('post/all-video-post','PostController@allVideoPost')->name('video.postAll');
 
 Route::resource('galleries','GalleryController');
 Route::get('gallery/fetch-image','GalleryController@fetchImage')->name('gallery.fetch');

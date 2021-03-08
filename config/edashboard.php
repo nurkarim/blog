@@ -32,12 +32,19 @@ return [
                 'badge_number'=>3,
                 'submenu'=>[
                     [
-                        'name'=>'Articles',
+                        'name'=>'Add Articles',
+                        'route'=>'posts.create',
+                    ],
+                    [
+                        'name'=>'All Articles',
                         'route'=>'posts.index',
                     ],
                     [
-                        'name'=>'Video Post',
+                        'name'=>'Add Video Post',
                         'route'=>'video.post',
+                    ],[
+                        'name'=>'All Video Post',
+                        'route'=>'video.postAll',
                     ],
                     [
                         'name'=>'Pending Post',

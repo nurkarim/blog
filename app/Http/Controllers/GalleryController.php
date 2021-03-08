@@ -423,6 +423,5 @@ class GalleryController extends Controller
     public function fetchVideo(){
         $videos         = Video::query()->orderBy('id','DESC')->paginate(24);
         return view('back.gallery.ajax_videos',compact('videos'));
-
     }
 }

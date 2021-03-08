@@ -30,8 +30,14 @@ class PostController extends Controller
 
     public function index()
     {
-        $data= $this->model->paginate(20);
+        $data= Post::query()->where('post_type','article')->paginate(20);
         return view("back.post.index",compact('data'));
+    }
+
+    public function allVideoPost()
+    {
+        $data= Post::query()->where('post_type','video')->paginate(20);
+        return view("back.post.all_video_post",compact('data'));
     }
 
     public function create()
@@ -48,6 +54,15 @@ class PostController extends Controller
         $languages=Language::query()->pluck('name','code');
         $subcategories=SubCategory::query()->where('category_id',$data->category_id)->pluck('name','id');
         return view('back.post.edit',compact('categories','languages','data','subcategories'));
+    }
+
+    public function videoPostEdit($id)
+    {
+        $data=Post::find($id);
+        $categories=Category::query()->where('language',App::getLocale())->pluck('name','id');
+        $languages=Language::query()->pluck('name','code');
+        $subcategories=SubCategory::query()->where('category_id',$data->category_id)->pluck('name','id');
+        return view('back.post.edit_video_post',compact('categories','languages','data','subcategories'));
     }
 
     public function store(PostRequest $request,PostRepository $postRepository)

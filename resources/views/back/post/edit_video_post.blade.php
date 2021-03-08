@@ -183,7 +183,102 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Video Thumbnail</h2>
+            </div>
+            <div class="card-body">
+                <div class="add-video-tab">
+                    <nav>
+                        <div class="nav nav-tabs m-b-20" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="upload-video-file" data-toggle="tab"
+                               href="#upload-video" role="tab">{{ __('upload_video') }}</a>
+                            <a class="nav-item nav-link" id="video-link" data-toggle="tab"
+                               href="#video_by_link" role="tab">{{ __('remove_video') }}</a>
+                        </div>
+                    </nav>
 
+                    <div class="tab-content  pt-3" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="upload-video" role="tabpanel">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button type="button" id="btnVideoModal" class="btn btn-primary"
+                                                data-toggle="modal"
+                                                data-target=".video-modal-lg">{{ __('add_video') }}</button>
+                                        <input id="video_id" name="video_id" type="hidden"
+                                               class="form-control" value="{{ $data->video_id }}">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    {{-- <label>{{ __('video_preview') }}</label> --}}
+                                    <div class="form-group">
+                                        <div class="form-group text-center">
+                                            <img src="@if(isset($data->imageGallery)) {{ url('public') }}/{{$data->imageGallery->thumbnail}} @else {{ url('public/default-image/default-video-100x100.png') }}  @endif "
+                                                 id="video_thumb" width="200"
+                                                 height="200" alt="image"
+                                                 class="img-responsive img-thumbnail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="video_by_link" role="tabpanel">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="video_url_type"
+                                               class="col-form-label">{{ __('video_url_type') }}</label>
+                                        <select id="video_url_type" name="video_url_type"
+                                                class="form-control">
+                                            <option value="">{{ __('select_option') }}</option>
+                                            <option @if($data->video_url_type=='mp4_url') selected @endif value="mp4_url">MP4 url</option>
+                                            <option  @if($data->video_url_type=='youtube_url') selected @endif value="youtube_url">Youtube url</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="video_url"
+                                               class="col-form-label">{{ __('video_url') }}</label>
+                                        <input id="video_url" name="video_url" type="text"
+                                               class="form-control" value="{{ $data->video_url }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Upload video tab end -->
+                <div class="form-group">
+                    <!-- Large modal -->
+                    <button type="button" class="btn btn-primary btn-image-modal" data-id="2"
+                            data-toggle="modal"
+                            data-target=".image-modal-lg">{{ __('add_video_thumbnail') }}</button>
+
+                    <input id="video_thumbnail_id" name="video_thumbnail_id" type="hidden"
+                           class="form-control" value="{{ $data->video_thumbnail_id }}">
+                </div>
+                <div class="form-group">
+                    <div class="form-group text-center">
+                        @if(isFileExist($data->video, @$data->video->video_thumbnail))
+                            <img
+                                src="{{basePath($data->video)}}/{{ $data->video->video_thumbnail }} "
+                                id="video_thumb" width="200" height="200"
+                                alt="image" class="img-responsive img-thumbnail">
+                        @else
+                            <img id="video_thumb"
+                                 src="{{asset('public/default-image/default-video-100x100.png') }} "
+                                 id="image_preview" width="200" height="200"
+                                 alt="image" class="img-responsive img-thumbnail">
+                        @endif
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">SEO Details</h3>
@@ -255,6 +350,7 @@
 @section('js')
 
     @include('back.gallery.index')
+    @include('back.gallery.video_gallery')
 
     <script src="{{ url('public/back/js') }}/post.js"></script>
 

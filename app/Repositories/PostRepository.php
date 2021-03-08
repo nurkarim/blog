@@ -107,6 +107,7 @@ class PostRepository{
         return true;
         }catch (QueryException $e){
             DB::rollBack();
+            return $e;
             return false;
         }
     }

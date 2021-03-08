@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\GalleryImage;
 use App\Models\Language;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -29,5 +30,10 @@ class Post extends Model
     public function imageGallery()
     {
         return $this->belongsTo(GalleryImage::class,'image_id');
+    }
+
+    public function video()
+    {
+        return $this->belongsTo(Video::class,'video_id');
     }
 }
