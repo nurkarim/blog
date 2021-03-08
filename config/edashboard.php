@@ -47,8 +47,16 @@ return [
                         'route'=>'video.postAll',
                     ],
                     [
-                        'name'=>'Pending Post',
-                        'url'=>'#',
+                        'name'=>'All Pending Post',
+                        'route'=>'post.pending',
+                    ],
+                    [
+                        'name'=>'All Draft Post',
+                        'route'=>'post.draftPost',
+                    ],
+                    [
+                        'name'=>'All Scheduled Post',
+                        'route'=>'post.schedulePost',
                     ]
                     ,
                     [

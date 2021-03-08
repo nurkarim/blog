@@ -20,6 +20,9 @@ Route::resource('posts','PostController');
 Route::get('post/create/video','PostController@videoPostCreate')->name('video.post');
 Route::get('post/edit/video/{id}','PostController@videoPostEdit')->name('video.postEdit');
 Route::get('post/all-video-post','PostController@allVideoPost')->name('video.postAll');
+Route::get('post/all-pending-post','PostController@pendingPost')->name('post.pending');
+Route::get('post/all-draft-post','PostController@draftPost')->name('post.draftPost');
+Route::get('post/all-schedule-post','PostController@schedulePost')->name('post.schedulePost');
 
 Route::resource('galleries','GalleryController');
 Route::get('gallery/fetch-image','GalleryController@fetchImage')->name('gallery.fetch');
