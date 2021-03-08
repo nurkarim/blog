@@ -343,7 +343,7 @@
             </div>
         </div>
     </div>
-    <input type="hidden" value="article" name="type">
+    <input type="hidden" value="video" name="type">
 
     {!! Form::close() !!}
 @endsection
