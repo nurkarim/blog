@@ -149,7 +149,7 @@ return [
                 'submenu'=>[
                     [
                         'name'=>'Menu',
-                        'url'=>"#",
+                        'route'=>"menu-items.index",
                     ],
                     [
                         'name'=>'Themes Options ',

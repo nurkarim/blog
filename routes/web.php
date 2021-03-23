@@ -31,3 +31,5 @@ Route::delete('gallery/fetch-delete','GalleryController@delete')->name('gallerie
 Route::get('gallery/fetch-video','GalleryController@fetchVideo')->name('fetch-video');
 Route::post('gallery/video-save','GalleryController@videoUpload')->name('video-upload');
 Route::delete('gallery/delete-video','GalleryController@deleteVideo')->name('delete-video');
+
+Route::resource('menu-items','MenuController');
