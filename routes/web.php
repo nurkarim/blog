@@ -33,3 +33,4 @@ Route::post('gallery/video-save','GalleryController@videoUpload')->name('video-u
 Route::delete('gallery/delete-video','GalleryController@deleteVideo')->name('delete-video');
 
 Route::resource('menu-items','MenuController');
+Route::resource('pages','PageController');

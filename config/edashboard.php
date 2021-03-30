@@ -82,16 +82,11 @@ return [
                 'submenu'=>[
                     [
                         'name'=>'Add Page',
-                        'url'=>"#",
-//                        'url'=>"report/all-user?from='.$from.'&to='.$to",
+                        'route'=>"pages.create",
                     ],
                     [
                         'name'=>'All Page',
-                        'url'=>"#"
-                    ],
-                    [
-                        'name'=>'Page Type',
-                        'url'=>'#',
+                        'route'=>"pages.index",
                     ]
                 ],
             ],

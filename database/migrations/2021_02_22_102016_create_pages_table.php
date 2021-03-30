@@ -22,6 +22,7 @@ class CreatePagesTable extends Migration
             $table->longText('description');
             $table->tinyInteger('template')->default(1)->comment('1 without sidebar, 2 with right sidebar, 3 with left sidebar');
             $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('visibility')->default(1);
             $table->tinyInteger('show_for_register')->default(1);
             $table->tinyInteger('show_title')->default(1);
             $table->tinyInteger('show_breadcrumb')->default(1);
