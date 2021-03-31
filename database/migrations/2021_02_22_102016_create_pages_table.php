@@ -26,6 +26,7 @@ class CreatePagesTable extends Migration
             $table->tinyInteger('show_for_register')->default(1);
             $table->tinyInteger('show_title')->default(1);
             $table->tinyInteger('show_breadcrumb')->default(1);
+            $table->tinyInteger('page_type')->default(1);
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
