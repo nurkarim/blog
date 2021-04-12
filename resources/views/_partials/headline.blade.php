@@ -7,16 +7,12 @@
             <div class="col-lg-10 col-md-9 col-sm-8 col-6">
                 <div class="feeding-text-dark">
                     <ol id="sample" class="ticker">
+                        @inject('customHelper', \App\CustomClasses\SettingsHelper)
+                        @foreach($customHelper->headline() as $headline)
                         <li>
-                            <a href="#">McDonell Kanye West highlights difficulties for celebritiesComplimentary decor and
-                                design advicewith Summit Park homes</a>
+                            <a href="{{ url('story',$headline->slug) }}">{{ $headline->title }}</a>
                         </li>
-                        <li>
-                            <a href="#">Magnificent Image Of The New Hoover Dam Bridge Taking Shape</a>
-                        </li>
-                        <li>
-                            <a href="#">If Obama Had Governed Like This in 2017 He'd Be the Transformational.</a>
-                        </li>
+                        @endforeach
                     </ol>
                 </div>
             </div>

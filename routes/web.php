@@ -35,3 +35,4 @@ Route::delete('gallery/delete-video','GalleryController@deleteVideo')->name('del
 Route::resource('menu-items','MenuController');
 
 Route::resource('pages','PageController');
+Route::resource('themeSettings','ThemeSettingController');

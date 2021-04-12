@@ -65,6 +65,7 @@ class MenuController extends Controller
             return ReturnMessage::insertSuccess();
         }catch (QueryException $e){
             DB::rollBack();
+            return $e->getMessage();
             return  ReturnMessage::somethingWrong();
         }
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmailTemplatesTable extends Migration
+class CreateThemeSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateEmailTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('email_templates', function (Blueprint $table) {
+        Schema::create('theme_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('email_group');
-            $table->string('subject');
-            $table->longText('template_body');
-            $table->string('language');
+            $table->tinyInteger('type')->default(1);
+            $table->string('label')->nullable();
+            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('ad_id')->nullable();
+            $table->string('section_style')->nullable();
+            $table->tinyInteger('show_ads')->default(0);
+            $table->tinyInteger('view_order')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
@@ -33,6 +37,6 @@ class CreateEmailTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('email_templates');
+        Schema::dropIfExists('theme_sections');
     }
 }

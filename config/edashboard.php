@@ -134,7 +134,7 @@ return [
             [
                 'name'=>"Appearance",
                 'url'=>"#",
-                'icon'=>"fa fa-cogs",
+                'icon'=>"fa fa-th",
                 'icon_color'=>"",
                 'can'=>"",
                 'active'=>'',
@@ -151,6 +151,14 @@ return [
                         'url'=>"#",
                     ]
                 ],
+            ],
+            [
+                'name'=>"Home Page Settings",
+                'route'=>"themeSettings.index",
+                'icon'=>"fa fa-cogs",
+                'icon_color'=>"text-success",
+                'can'=>"",
+                'active'=>'',
             ],
             [
                 'name'=>"Newsletter",

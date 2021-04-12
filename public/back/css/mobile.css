@@ -53,3 +53,8 @@ body {
     background-color: #efeff6;
     -webkit-font-smoothing: antialiased;
 }
+.cat-block-img {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0 auto;
+}

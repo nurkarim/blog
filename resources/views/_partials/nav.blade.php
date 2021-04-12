@@ -1,3 +1,4 @@
+@inject('customHelper', \App\CustomClasses\SettingsHelper)
 <header>
     <div id="header-layout1" class="header-style1">
         <div class="main-menu-area bg-background-main header-menu-fixed" id="sticker">
@@ -17,34 +18,22 @@
                                     <li class="active">
                                         <a href="/">Home</a>
                                     </li>
+                                    @foreach($customHelper->menus() as $menu)
                                     <li>
-                                        <a href="#">Laravel</a>
+                                        <a @if($menu->new_tab==1) target="_blank" @endif @if($menu->source=="category") href="category/{{ $menu->url }}" @else href="page/{{ $menu->url }}" @endif >{{ $menu->title }}</a>
+                                        @if($menu->is_dropdown=="yes")
+                                            @if(isset($menu->category->subCategory))
                                         <ul class="ne-dropdown-menu">
+                                            @foreach($menu->category->subCategory as $subCategory)
                                             <li>
                                                 <a href="#">Laravel 8</a>
                                             </li>
+                                            @endforeach
                                         </ul>
+                                            @endif
+                                            @endif
                                     </li>
-                                    <li>
-                                        <a href="#">PHP</a>
-                                        <ul class="ne-dropdown-menu">
-                                            <li>
-                                                <a href="/">PHP 8</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="">C#.Net</a>
-                                    </li>
-                                    <li>
-                                        <a href="post-style-2.html">Javascript</a>
-                                    </li>
-                                    <li>
-                                        <a href="post-style-3.html">Vuejs</a>
-                                    </li>
-                                    <li>
-                                        <a href="post-style-4.html">Typescript</a>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </nav>
                         </div>
