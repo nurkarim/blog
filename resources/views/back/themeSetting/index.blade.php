@@ -41,7 +41,7 @@
 
                                 </th>
                                 <th>
-                                    <button type="button"   data-toggle="modal" data-target="#modal" onclick="loadModal('{{route('themeSettings.edit',$item->id)}}')"  class="btn btn-info btn-xs"><i class="fa fa-edit"></i></button>
+                                    <a href="{{route('themeSettings.edit',$item->id)}}"      class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a>
                                     {!! Form::open(['url' => ['themeSettings', $item->id],'method'=>'DELETE','style'=>'display:inline;']) !!}
                                     <button onclick="return confirm('Are you sure you want to delete this?');" type="submit"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                                     {!! Form::close() !!}

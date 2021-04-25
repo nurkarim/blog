@@ -13,6 +13,12 @@
                 {!! Form::open(['url'=>URL::to('themeSettings'),'id'=>'myForm','files'=>true]) !!}
                 <div class="row">
                     <div class="form-group clearfix col-md-6">
+                        <label class="control-label">Label
+                            <star>*</star>
+                        </label>
+                        {!! Form::select('label',['top'=>'Top','center'=>'Center','bottom'=>'Bottom'],null,['class'=>'form-control','required','onchange'=>'return changePosition(this.value)']) !!}
+                    </div>
+                    <div class="form-group clearfix col-md-6">
                         <label class="control-label">Type
                             <star>*</star>
                         </label>
@@ -21,10 +27,14 @@
                     <div class="form-group clearfix col-md-6 cat">
                         <label class="control-label">Category
                         </label>
-                        {!! Form::select('category_id',$categories,null,['class'=>'form-control']) !!}
+                        {!! Form::select('category_id',$categories,null,['class'=>'form-control','id'=>'category_id']) !!}
                     </div>
 
-
+                    <div class="form-group clearfix col-md-6 scat">
+                        <label class="control-label">Sub Category
+                        </label>
+                        {!! Form::select('sub_category_id',[],null,['class'=>'form-control','id'=>'sub_category_id']) !!}
+                    </div>
 
                     <div class="form-group clearfix col-md-6">
                         <label class="control-label">View Order
@@ -119,6 +129,17 @@
 @endsection
 @section('js')
     <script>
+        $(".scat").hide();
+        function changePosition(value) {
+            if (value=="top"){
+                $(".scat").hide();
+            }else if (value=="bottom"){
+                $(".scat").hide();
+            }else{
+                $(".scat").show();
+            }
+        }
+
         function changeTypeC(value) {
             if (value=="2"){
                 $(".cat").hide();
@@ -128,5 +149,28 @@
                 $(".cat").show();
             }
         }
+
+        $(document).on('change', '#category_id', function () {
+            var id = $('#category_id').val();
+            const url = '{{ route('ajaxSubCategory') }}';
+            $.ajax({
+                type: 'GET',
+                async: false,
+                url: url,
+                data: {'category_id': id},
+                dataType: "json",
+                success: function (data) {
+                    $("#sub_category_id").empty();
+                    $("#sub_category_id").append('<option value="">Select One</option>');
+                    $.each(data, function (i, value) {
+                        $("#sub_category_id").append('<option value=' + value.id + '>' + value.name + '</option>');
+                    });
+                },
+                error: function (data) {
+
+                }
+            });
+
+        });
     </script>
 @endsection

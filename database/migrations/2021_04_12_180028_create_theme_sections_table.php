@@ -18,6 +18,7 @@ class CreateThemeSectionsTable extends Migration
             $table->tinyInteger('type')->default(1);
             $table->string('label')->nullable();
             $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('sub_category_id')->nullable();
             $table->unsignedInteger('ad_id')->nullable();
             $table->string('section_style')->nullable();
             $table->tinyInteger('show_ads')->default(0);

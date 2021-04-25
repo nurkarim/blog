@@ -175,7 +175,7 @@
                     <div class="row p-l-15">
                         <div class="col-12">
                             <label for="post_content" class="col-form-label">Content*</label>
-                            <textarea name="content" value="" id="summernote"
+                            <textarea name="details" value="" id="summernote"
                                       cols="30" rows="5" required></textarea>
                         </div>
                     </div>

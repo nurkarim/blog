@@ -27,9 +27,12 @@ class ThemeSettingController extends Controller
         return view("back.themeSetting.create",compact('categories','ads'));
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view("back.themeSetting.edit");
+        $data=ThemeSetting::find($id);
+        $categories=Category::query()->where('status',1)->pluck('name','id');
+        $ads=AdsLocation::query()->where('ad_end_date','>=',date('Y-m-d H:i:s'))->pluck('title','ad_id');
+        return view("back.themeSetting.edit",compact('categories','ads','data'));
     }
 
     public function store(Request $request)
@@ -41,10 +44,52 @@ class ThemeSettingController extends Controller
             $save->type         =$request->type;
             $save->label        ="";
             if ($request->type==1){
+                if ($request->label=='top' OR $request->label=='bottom'):
                 Validator::make($request->all(), [
-                    'category_id' => 'required|unique:theme_sections',
+                    'category_id' => 'required|unique:theme_sections,',
                 ])->validate();
                 $save->category_id  =$request->category_id;
+                endif;
+            }
+
+            if ($request->show_ads==1){
+                Validator::make($request->all(), [
+                    'ad_id' => 'required',
+                ])->validate();
+                $save->ad_id        =$request->ad_id;
+            }
+            $save->sub_category_id=$request->sub_category_id;
+            $save->section_style=$request->section_style;
+            $save->show_ads     =$request->show_ads;
+            $save->view_order   =$request->view_order;
+            $save->status       =$request->status;
+            $save->label       =$request->label;
+            $save->save();
+            DB::commit();
+            return ReturnMessage::insertSuccess();
+        }catch (QueryException $e){
+            DB::rollBack();
+            return ReturnMessage::somethingWrong();
+        }
+    }
+
+    public function update($id,Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $save               =ThemeSetting::find($id);
+            $save->type         =$request->type;
+            $save->label        ="";
+            if ($request->type==1){
+                if ($request->label=='top' OR $request->label=='bottom'):
+                Validator::make($request->all(), [
+                    'category_id' => 'required|unique:theme_sections,category_id,'.$id,
+                ])->validate();
+                $save->category_id  =$request->category_id;
+                else:
+                    $save->category_id  =$request->category_id;
+                endif;
             }
             if ($request->show_ads==1){
                 Validator::make($request->all(), [
@@ -52,16 +97,28 @@ class ThemeSettingController extends Controller
                 ])->validate();
                 $save->ad_id        =$request->ad_id;
             }
+            $save->sub_category_id=$request->sub_category_id;
             $save->section_style=$request->section_style;
             $save->show_ads     =$request->show_ads;
             $save->view_order   =$request->view_order;
             $save->status       =$request->status;
+            $save->label       =$request->label;
             $save->save();
             DB::commit();
-            return ReturnMessage::insertSuccess();
+            return ReturnMessage::updateSuccess();
         }catch (QueryException $e){
             DB::rollBack();
-            return $e->getMessage();
+            return ReturnMessage::somethingWrong();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $save               =ThemeSetting::find($id);
+            $save->delete();
+            return ReturnMessage::deleteSuccess();
+        }catch (QueryException $e){
             return ReturnMessage::somethingWrong();
         }
     }
