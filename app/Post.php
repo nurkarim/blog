@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\GalleryImage;
 use App\Models\Language;
+use App\Models\SubCategory;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,11 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class,'sub_category_id');
     }
 
     public function user()

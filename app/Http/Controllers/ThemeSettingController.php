@@ -44,31 +44,32 @@ class ThemeSettingController extends Controller
             $save->type         =$request->type;
             $save->label        ="";
             if ($request->type==1){
-                if ($request->label=='top' OR $request->label=='bottom'):
+                if ($request->label=='top'):
                 Validator::make($request->all(), [
                     'category_id' => 'required|unique:theme_sections,',
                 ])->validate();
-                $save->category_id  =$request->category_id;
                 endif;
             }
-
+            $save->category_id  =$request->category_id;
             if ($request->show_ads==1){
                 Validator::make($request->all(), [
                     'ad_id' => 'required',
                 ])->validate();
                 $save->ad_id        =$request->ad_id;
             }
-            $save->sub_category_id=$request->sub_category_id;
-            $save->section_style=$request->section_style;
+            $save->sub_category_id =$request->sub_category_id;
+            $save->section_style =$request->section_style;
             $save->show_ads     =$request->show_ads;
             $save->view_order   =$request->view_order;
             $save->status       =$request->status;
-            $save->label       =$request->label;
+            $save->label        =$request->label;
             $save->save();
+
             DB::commit();
             return ReturnMessage::insertSuccess();
         }catch (QueryException $e){
             DB::rollBack();
+            return $e->getMessage();
             return ReturnMessage::somethingWrong();
         }
     }

@@ -25,8 +25,5 @@ class Category extends Model
         return $this->hasMany(Post::class,'category_id')->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->where('post_type','article')->where('visibility',1)->latest()->take(6);
     }
 
-    public function latest_single_post()
-    {
-        return $this->hasMany(Post::class,'category_id')->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->where('post_type','article')->where('visibility',1)->latest()->take(1);
-    }
+
 }

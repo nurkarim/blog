@@ -27,5 +27,4 @@ class ThemeSetting extends Model
     }
 
 
-
 }
