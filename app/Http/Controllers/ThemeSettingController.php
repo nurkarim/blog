@@ -83,7 +83,7 @@ class ThemeSettingController extends Controller
             $save->type         =$request->type;
             $save->label        ="";
             if ($request->type==1){
-                if ($request->label=='top' OR $request->label=='bottom'):
+                if ($request->label=='top'):
                 Validator::make($request->all(), [
                     'category_id' => 'required|unique:theme_sections,category_id,'.$id,
                 ])->validate();

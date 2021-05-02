@@ -1,56 +1,95 @@
+
 <!doctype html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
+<html class="no-js" lang="">
+
+
+<!-- Mirrored from www.radiustheme.com/demo/html/newsedge/newsedge/index7.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Feb 2021 05:23:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-@yield('meta')
-    @include('_partials.header')
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWNB5ZSHQ7"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-FWNB5ZSHQ7');
-        </script>
-
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PDDHLCP');</script>
-        <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>NewsEdge | Home 7</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+@include('_partials.header')
 
 </head>
 
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDDHLCP"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<div id="wrapper" class="wrapper">
+
+<div id="wrapper">
     <!-- Header Area Start Here -->
-    @include('_partials.nav')
+    <header>
+        <div id="header-layout2" class="header-style7">
+            @include('_partials.timezone')
+            <div class="main-menu-area bg-body border-bottom" id="sticker">
+                <div class="container">
+                    <div class="row no-gutters d-flex align-items-center">
+                        <div class="col-lg-2 col-md-2 d-none d-lg-block">
+                            <div class="logo-area">
+                                <a href="/" class="img-fluid">
+                                    <img src="{{ asset('public/img/logo.jpg') }}" alt="logo" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 d-none d-lg-block position-static min-height-none">
+                            <div class="ne-main-menu">
+                                @include('_partials.nav')
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 text-right position-static">
+                            <div class="header-action-item on-mobile-fixed">
+                                <ul>
+                                    <li>
+                                        <form id="top-search-form" class="header-search-dark">
+                                            <input type="text" class="search-input" placeholder="Search...." required="" style="display: none;">
+                                            <button class="search-button">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li class="d-none d-sm-block d-md-block d-lg-none">
+                                        <button type="button" class="login-btn" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-user" aria-hidden="true"></i>Sign in
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <div id="side-menu-trigger" class="offcanvas-menu-btn offcanvas-btn-repoint">
+                                            <a href="#" class="menu-bar">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </a>
+                                            <a href="#" class="menu-times close">
+                                                <span></span>
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- Header Area End Here -->
     <!-- News Feed Area Start Here -->
-@include('_partials.headline')
+    @include('_partials.headline')
     <!-- News Feed Area End Here -->
-    <!-- News Info List Area Start Here -->
-@include('_partials.timezone')
-
+    <!-- Slider Area Start Here -->
     @yield('content')
-    <!-- Footer Area Start Here -->
+
     <footer>
+
         <div class="footer-area-bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a href="index.html" class="footer-logo img-fluid">
+                        <a href="/" class="footer-logo img-fluid">
                             <img src="img/logo.png" alt="logo" class="img-fluid">
                         </a>
                         <ul class="footer-social">
@@ -98,15 +137,164 @@
     </footer>
     <!-- Footer Area End Here -->
     <!-- Modal Start-->
-    @include('_partials.modal')
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="title-login-form">Login</div>
+                </div>
+                <div class="modal-body">
+                    <div class="login-form">
+                        <form>
+                            <label>Username or email address *</label>
+                            <input type="text" placeholder="Name or E-mail" />
+                            <label>Password *</label>
+                            <input type="password" placeholder="Password" />
+                            <div class="checkbox checkbox-primary">
+                                <input id="checkbox" type="checkbox" checked>
+                                <label for="checkbox">Remember Me</label>
+                            </div>
+                            <button type="submit" value="Login">Login</button>
+                            <button class="form-cancel" type="submit" value="">Cancel</button>
+                            <label class="lost-password">
+                                <a href="#">Lost your password?</a>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Modal End-->
     <!-- Offcanvas Menu Start -->
-    @include('_partials.side_bar')
+    <div id="offcanvas-body-wrapper" class="offcanvas-body-wrapper">
+        <div id="offcanvas-nav-close" class="offcanvas-nav-close offcanvas-menu-btn">
+            <a href="#" class="menu-times re-point">
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+        <div class="offcanvas-main-body">
+            <ul id="accordion" class="offcanvas-nav panel-group">
+                <li class="panel panel-default">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <i class="fa fa-home" aria-hidden="true"></i>Home Pages</a>
+                    </div>
+                    <div aria-expanded="false" id="collapseOne" role="tabpanel" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="offcanvas-sub-nav">
+                                <li>
+                                    <a href="index.html">Home 1</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Home 2</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">Home 3</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">Home 4</a>
+                                </li>
+                                <li>
+                                    <a href="index5.html">Home 5</a>
+                                </li>
+                                <li>
+                                    <a href="index6.html">Home 6</a>
+                                </li>
+                                <li>
+                                    <a href="index7.html">Home 7</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="author-post.html">
+                        <i class="fa fa-user" aria-hidden="true"></i>Author Post Page</a>
+                </li>
+                <li class="panel panel-default">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            <i class="fa fa-file-text" aria-hidden="true"></i>Post Pages</a>
+                    </div>
+                    <div aria-expanded="false" id="collapseTwo" role="tabpanel" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="offcanvas-sub-nav">
+                                <li>
+                                    <a href="post-style-1.html">Post Style 1</a>
+                                </li>
+                                <li>
+                                    <a href="post-style-2.html">Post Style 2</a>
+                                </li>
+                                <li>
+                                    <a href="post-style-3.html">Post Style 3</a>
+                                </li>
+                                <li>
+                                    <a href="post-style-4.html">Post Style 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="panel panel-default">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i>News Details Pages</a>
+                    </div>
+                    <div aria-expanded="false" id="collapseThree" role="tabpanel" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="offcanvas-sub-nav">
+                                <li>
+                                    <a href="single-news-1.html">News Details 1</a>
+                                </li>
+                                <li>
+                                    <a href="single-news-2.html">News Details 2</a>
+                                </li>
+                                <li>
+                                    <a href="single-news-3.html">News Details 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="archive.html">
+                        <i class="fa fa-archive" aria-hidden="true"></i>Archive Page</a>
+                </li>
+                <li class="panel panel-default">
+                    <div class="panel-heading">
+                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            <i class="fa fa-picture-o" aria-hidden="true"></i>Gallery Pages</a>
+                    </div>
+                    <div aria-expanded="false" id="collapseFour" role="tabpanel" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="offcanvas-sub-nav">
+                                <li>
+                                    <a href="gallery-style-1.html">Gallery Style 1</a>
+                                </li>
+                                <li>
+                                    <a href="gallery-style-2.html">Gallery Style 2</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="404.html">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>404 Error Page</a>
+                </li>
+                <li>
+                    <a href="contact.html">
+                        <i class="fa fa-phone" aria-hidden="true"></i>Contact Page</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <!-- Offcanvas Menu End -->
 </div>
-
 @include('_partials.footer')
 </body>
-
 
 </html>

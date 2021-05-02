@@ -41,11 +41,12 @@ class GalleryController extends Controller
             $originalImageName      = date('YmdHis') . "_original_" . rand(1, 50) . '.' . 'webp';
             $ogImageName            = date('YmdHis') . "_ogImage_" . rand(1, 50) . '.' . $fileType;
             $thumbnailImageName     = date('YmdHis') . "_thumbnail_100x100_" . rand(1, 50) . '.' . 'webp';
-            $bigImageName           = date('YmdHis') . "_big_1080x1000_" . rand(1, 50) . '.' . 'webp';
-            $bigImageNameTwo        = date('YmdHis') . "_big_730x400_" . rand(1, 50) . '.' . 'webp';
-            $mediumImageName        = date('YmdHis') . "_medium_258x215_" . rand(1, 50) . '.' . 'webp';
-            $mediumImageNameTwo     = date('YmdHis') . "_medium_350x190_" . rand(1, 50) . '.' . 'webp';
-            $mediumImageNameThree   = date('YmdHis') . "_medium_460x350_" . rand(1, 50) . '.' . 'webp';
+            $bigImageName           = date('YmdHis') . "_big_1200x814_" . rand(1, 50) . '.' . 'webp';
+            $bigImageNameTwo        = date('YmdHis') . "_big_800x578_" . rand(1, 50) . '.' . 'webp';
+            $bigImageNameThree      = date('YmdHis') . "_big_800x1081_" . rand(1, 50) . '.' . 'webp';
+            $mediumImageName        = date('YmdHis') . "_medium_600x399_" . rand(1, 50) . '.' . 'webp';
+            $mediumImageNameTwo     = date('YmdHis') . "_medium_600x384_" . rand(1, 50) . '.' . 'webp';
+            $mediumImageNameThree   = date('YmdHis') . "_medium_300x226_" . rand(1, 50) . '.' . 'webp';
             $smallImageName         = date('YmdHis') . "_small_240x160_" . rand(1, 50) . '.' . 'webp';
 
             // image upload directory
@@ -60,6 +61,7 @@ class GalleryController extends Controller
             $thumbnailImageUrl      = $directory . $thumbnailImageName;
             $bigImageUrl            = $directory . $bigImageName;
             $bigImageUrlTwo         = $directory . $bigImageNameTwo;
+            $bigImageUrlThree       = $directory . $bigImageNameThree;
             $mediumImageUrl         = $directory . $mediumImageName;
             $mediumImageUrlTwo      = $directory . $mediumImageNameTwo;
             $mediumImageUrlThree    = $directory . $mediumImageNameThree;
@@ -76,24 +78,26 @@ class GalleryController extends Controller
                 if ($fileType == 'jpeg' or $fileType == 'jpg' or $fileType == 'JPEG' or $fileType == 'JPG'):
                     $imgOriginal    = Image::make(imagecreatefromjpeg($requestImage))->encode('webp', 70);
                     $imgThumbnail   = Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->encode('webp', 70);
-                    $imgBig         = Image::make(imagecreatefromjpeg($requestImage))->fit(1080, 1000)->encode('webp', 70);
-                    $imgBigTwo      = Image::make(imagecreatefromjpeg($requestImage))->fit(730, 400)->encode('webp', 70);
-                    $imgMedium      = Image::make(imagecreatefromjpeg($requestImage))->fit(358, 215)->encode('webp', 70);
-                    $imgMediumTwo   = Image::make(imagecreatefromjpeg($requestImage))->fit(350, 190)->encode('webp', 70);
-                    $imgMediumThree = Image::make(imagecreatefromjpeg($requestImage))->fit(460, 350)->encode('webp', 70);
-                    $imgSmall       = Image::make(imagecreatefromjpeg($requestImage))->fit(240, 160)->encode('webp', 70);
+                    $imgBig         = Image::make(imagecreatefromjpeg($requestImage))->fit(1200, 814)->encode('webp', 70);
+                    $imgBigTwo      = Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->encode('webp', 70);
+                    $imgBigThree      = Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1081)->encode('webp', 70);
+                    $imgMedium      = Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->encode('webp', 70);
+                    $imgMediumTwo   = Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->encode('webp', 70);
+                    $imgMediumThree = Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->encode('webp', 70);
+                    $imgSmall       = Image::make(imagecreatefromjpeg($requestImage))->fit(124, 88)->encode('webp', 70);
 
                 //png compression
                 elseif ($fileType == 'PNG' or $fileType == 'png'):
 
                     $imgOriginal    = Image::make(imagecreatefrompng($requestImage))->encode('webp', 70);
                     $imgThumbnail   = Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->encode('webp', 70);
-                    $imgBig         = Image::make(imagecreatefrompng($requestImage))->fit(1080, 1000)->encode('webp', 70);
-                    $imgBigTwo      = Image::make(imagecreatefrompng($requestImage))->fit(730, 400)->encode('webp', 70);
-                    $imgMedium      = Image::make(imagecreatefrompng($requestImage))->fit(358, 215)->encode('webp', 70);
-                    $imgMediumTwo   = Image::make(imagecreatefrompng($requestImage))->fit(350, 190)->encode('webp', 70);
-                    $imgMediumThree = Image::make(imagecreatefrompng($requestImage))->fit(460, 350)->encode('webp', 70);
-                    $imgSmall       = Image::make(imagecreatefrompng($requestImage))->fit(240, 160)->encode('webp', 70);
+                    $imgBig         = Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->encode('webp', 70);
+                    $imgBigTwo      = Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->encode('webp', 70);
+                    $imgBigThree      = Image::make(imagecreatefrompng($requestImage))->fit(800, 1081)->encode('webp', 70);
+                    $imgMedium      = Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->encode('webp', 70);
+                    $imgMediumTwo   = Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->encode('webp', 70);
+                    $imgMediumThree = Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->encode('webp', 70);
+                    $imgSmall       = Image::make(imagecreatefrompng($requestImage))->fit(124, 88)->encode('webp', 70);
 
                 endif;
 
@@ -103,6 +107,7 @@ class GalleryController extends Controller
                     Storage::disk('s3')->put($thumbnailImageUrl, $imgThumbnail);
                     Storage::disk('s3')->put($bigImageUrl, $imgBig);
                     Storage::disk('s3')->put($bigImageUrlTwo, $imgBigTwo);
+                    Storage::disk('s3')->put($bigImageUrlThree, $imgBigThree);
                     Storage::disk('s3')->put($mediumImageUrl, $imgMedium);
                     Storage::disk('s3')->put($mediumImageUrlTwo, $imgMediumTwo);
                     Storage::disk('s3')->put($mediumImageUrlThree, $imgMediumThree);
@@ -122,24 +127,26 @@ class GalleryController extends Controller
                     Image::make(imagecreatefromjpeg($requestImage))->save($originalImageUrl, 70);
 
                     Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(1080, 1000)->save($bigImageUrl, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(730, 400)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(358, 215)->save($mediumImageUrl, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(350, 190)->save($mediumImageUrlTwo, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(460, 350)->save($mediumImageUrlThree, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(240, 160)->save($smallImageUrl, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1081)->save($bigImageUrlThree, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(124, 88)->save($smallImageUrl, 70);
 
                 //PNG, png compression
                 elseif ($fileType == 'PNG' or $fileType == 'png'):
                     Image::make(imagecreatefrompng($requestImage))->save($originalImageUrl, 70);
 
                     Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(1080, 1000)->save($bigImageUrl, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(730, 400)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(358, 215)->save($mediumImageUrl, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(350, 190)->save($mediumImageUrlTwo, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(460, 350)->save($mediumImageUrlThree, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(240, 160)->save($smallImageUrl, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(800, 1081)->save($bigImageUrlThree, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(124, 160)->save($smallImageUrl, 70);
                 endif;
             endif;
 
@@ -149,6 +156,7 @@ class GalleryController extends Controller
             $image->thumbnail           = str_replace("public/","",$thumbnailImageUrl);
             $image->big_image           = str_replace("public/","",$bigImageUrl);
             $image->big_image_two       = str_replace("public/","",$bigImageUrlTwo);
+            $image->big_image_three       = str_replace("public/","",$bigImageUrlThree);
             $image->medium_image        = str_replace("public/","",$mediumImageUrl);
             $image->medium_image_two    = str_replace("public/","",$mediumImageUrlTwo);
             $image->medium_image_three  = str_replace("public/","",$mediumImageUrlThree);
@@ -205,6 +213,9 @@ class GalleryController extends Controller
             if (Storage::disk('s3')->exists($image->big_image_two) && !blank($image->big_image_two)) :
                 Storage::disk('s3')->delete($image->big_image_two);
             endif;
+            if (Storage::disk('s3')->exists($image->big_image_three) && !blank($image->big_image_three)) :
+                Storage::disk('s3')->delete($image->big_image_three);
+            endif;
             if (Storage::disk('s3')->exists($image->medium_image) && !blank($image->medium_image)) :
                 Storage::disk('s3')->delete($image->medium_image);
             endif;
@@ -247,6 +258,9 @@ class GalleryController extends Controller
                 endif;
                 if (File::exists($path.$image->big_image_two) && !blank($image->big_image_two)) :
                     unlink($path.$image->big_image_two);
+                endif;
+                if (File::exists($path.$image->big_image_three) && !blank($image->big_image_three)) :
+                    unlink($path.$image->big_image_three);
                 endif;
                 if (File::exists($path.$image->medium_image) && !blank($image->medium_image)) :
                     unlink($path.$image->medium_image);

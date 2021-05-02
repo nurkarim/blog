@@ -21,6 +21,7 @@ class CreateImagesTable extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('big_image')->nullable();
             $table->string('big_image_two')->nullable();
+            $table->string('big_image_three')->nullable();
             $table->string('medium_image')->nullable();
             $table->string('medium_image_two')->nullable();
             $table->string('medium_image_three')->nullable();
