@@ -171,6 +171,13 @@
 
                         </div>
                     </div>
+                    <div class="row p-l-15">
+                        <div class="col-12">
+                            <label for="sub_content" class="col-form-label">Sub Content*</label>
+                            <textarea name="sub_content"  id="sub_content"
+                                      cols="30" rows="5" required></textarea>
+                        </div>
+                    </div>
                     <!-- tinemcey start -->
                     <div class="row p-l-15">
                         <div class="col-12">

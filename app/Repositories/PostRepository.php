@@ -130,6 +130,7 @@ class PostRepository{
             endif;
 
             $post->content      = $request->content;
+            $post->sub_content      = $request->sub_content;
             $post->visibility   = $request->visibility;
 
             if(isset($request->featured)):

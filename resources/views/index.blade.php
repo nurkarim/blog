@@ -2,13 +2,11 @@
 <!doctype html>
 <html class="no-js" lang="">
 
-
-<!-- Mirrored from www.radiustheme.com/demo/html/newsedge/newsedge/index7.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Feb 2021 05:23:28 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>NewsEdge | Home 7</title>
+    <title>Laradevs | @yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -30,7 +28,7 @@
                         <div class="col-lg-2 col-md-2 d-none d-lg-block">
                             <div class="logo-area">
                                 <a href="/" class="img-fluid">
-                                    <img src="{{ asset('public/img/logo.jpg') }}" alt="logo" class="img-fluid">
+                                    <img src="{{ asset('public/img/logo.png') }}" alt="logo" class="img-fluid">
                                 </a>
                             </div>
                         </div>
@@ -90,7 +88,7 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <a href="/" class="footer-logo img-fluid">
-                            <img src="img/logo.png" alt="logo" class="img-fluid">
+                            <img src="http://amarsomoy24.com/public/images/20201204024804_logo_39.png" alt="logo" class="img-fluid">
                         </a>
                         <ul class="footer-social">
                             <li>

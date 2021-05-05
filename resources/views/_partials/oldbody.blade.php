@@ -135,7 +135,7 @@
                                                                     <li>
                                                                 <span>
                                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                                </span>{{ date('M d, Y',strtotime($latestPostTop->updated_at)) }}
+                                                                </span>{{ date('M d, Y',strtotime($catPost->updated_at)) }}
                                                                     </li>
                                                                 </ul>
                                                             </div>

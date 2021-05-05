@@ -43,7 +43,7 @@ class GalleryController extends Controller
             $thumbnailImageName     = date('YmdHis') . "_thumbnail_100x100_" . rand(1, 50) . '.' . 'webp';
             $bigImageName           = date('YmdHis') . "_big_1200x814_" . rand(1, 50) . '.' . 'webp';
             $bigImageNameTwo        = date('YmdHis') . "_big_800x578_" . rand(1, 50) . '.' . 'webp';
-            $bigImageNameThree      = date('YmdHis') . "_big_800x1081_" . rand(1, 50) . '.' . 'webp';
+            $bigImageNameThree      = date('YmdHis') . "_big_800x1156_" . rand(1, 50) . '.' . 'webp';
             $mediumImageName        = date('YmdHis') . "_medium_600x399_" . rand(1, 50) . '.' . 'webp';
             $mediumImageNameTwo     = date('YmdHis') . "_medium_600x384_" . rand(1, 50) . '.' . 'webp';
             $mediumImageNameThree   = date('YmdHis') . "_medium_300x226_" . rand(1, 50) . '.' . 'webp';
@@ -80,7 +80,7 @@ class GalleryController extends Controller
                     $imgThumbnail   = Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->encode('webp', 70);
                     $imgBig         = Image::make(imagecreatefromjpeg($requestImage))->fit(1200, 814)->encode('webp', 70);
                     $imgBigTwo      = Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->encode('webp', 70);
-                    $imgBigThree      = Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1081)->encode('webp', 70);
+                    $imgBigThree      = Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1156)->encode('webp', 70);
                     $imgMedium      = Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->encode('webp', 70);
                     $imgMediumTwo   = Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->encode('webp', 70);
                     $imgMediumThree = Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->encode('webp', 70);
@@ -93,7 +93,7 @@ class GalleryController extends Controller
                     $imgThumbnail   = Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->encode('webp', 70);
                     $imgBig         = Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->encode('webp', 70);
                     $imgBigTwo      = Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->encode('webp', 70);
-                    $imgBigThree      = Image::make(imagecreatefrompng($requestImage))->fit(800, 1081)->encode('webp', 70);
+                    $imgBigThree      = Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->encode('webp', 70);
                     $imgMedium      = Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->encode('webp', 70);
                     $imgMediumTwo   = Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->encode('webp', 70);
                     $imgMediumThree = Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->encode('webp', 70);
@@ -129,7 +129,7 @@ class GalleryController extends Controller
                     Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1081)->save($bigImageUrlThree, 70);
+                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
@@ -142,7 +142,7 @@ class GalleryController extends Controller
                     Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(800, 1081)->save($bigImageUrlThree, 70);
+                    Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);

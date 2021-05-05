@@ -97,4 +97,1013 @@
             </div>
         </div>
     </section>
+
+
+
+    <section class="section-space-bottom-less30">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-12 mb-30">
+                    <div class="item-box-light-md">
+                        @php
+                            $sectionCollection=collect($primarySections);
+            $sections=$sectionCollection->where('type',1)->where('label','top')->all();
+            $i=1;
+                        @endphp
+                        @foreach($sections as $primarySection)
+                            <?php
+                            $i++;
+                            ?>
+                            @if($primarySection->section_style=='style_2')
+                                <div class="mb-20-r ne-isotope">
+                                    <div class="topic-border @if($i%2==0) color-cinnabar @else color-apple @endif   mb-30">
+                                        <div class="topic-box-lg color-cinnabar">{{ $primarySection->category->name }}</div>
+                                        <div class="isotope-classes-tab isotop-btn">
+                                            @if(isset($primarySection->category->subCategoriesBody))
+                                                @foreach($primarySection->category->subCategoriesBody as $key=>$subcategory)
+                                                    <a href="#"
+                                                       data-filter=".{{ $subcategory->slug }}"
+                                                       @if($key==0) class="current" @endif>{{ $subcategory->name }}</a>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <div class="more-info-link">
+                                            <a href="{{ url('category',$primarySection->category->slug) }}">More
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="featuredContainer">
+                                        <?php
+                                        $arrayID = 0;
+                                        ?>
+                                        @foreach($primarySection->category->subCategoriesBody as $sub_catPost)
+                                            <div class="row {{ $sub_catPost->slug }}">
+                                                @foreach($sub_catPost->post as $key=>$catPost)
+                                                <div class="col-md-6 col-sm-12">
+                                                    <div class="img-overlay-70 img-scale-animate mb-30">
+                                                        <a href="{{ url('story',$catPost->slug) }}">
+                                                            <img src="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->big_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid width-100">
+                                                        </a>
+                                                        <div class="mask-content-lg">
+                                                            <div class="topic-box-sm color-cinnabar mb-20">{{ $sub_catPost->name }}</div>
+                                                            <div class="post-date-light">
+                                                                <ul>
+                                                                    <li>
+                                                                        <span>by</span>
+                                                                        <a href="#">{{ @$catPost->user->name }}</a>
+                                                                    </li>
+                                                                    <li>
+                                                                <span>
+                                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                </span>{{ date('M d, Y',strtotime($catPost->updated_at)) }}</li>
+                                                                </ul>
+                                                            </div>
+                                                            <h2 class="title-medium-light size-lg">
+                                                                <a href="{{ url('story',$catPost->slug) }}">{{ $catPost->title }}</a>
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    @if($key==0)
+                                                        <?php
+                                                        $arrayID = $catPost->id;
+                                                        ?>
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                                <div class="col-md-6 col-sm-12">
+                                                    @foreach($sub_catPost->post()->where('id','!=',$arrayID)->get() as $catPost)
+                                                        <div class="media mb-30">
+                                                            <a class="width38-lg width40-md img-opacity-hover"
+                                                               href="{{ url('story',$catPost->slug) }}">
+                                                                <img
+                                                                    data-original="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                                                    alt="{{ $catPost->title }}" class="img-fluid">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <div class="post-date-dark">
+                                                                    <ul>
+                                                                        <li>
+                                                                <span>
+                                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                </span>{{ date('M d, Y',strtotime($catPost->updated_at)) }}
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <h3 class="title-medium-dark size-md mb-none">
+                                                                    <a href="{{ url('story',$catPost->slug) }}">{{ $catPost->title }}</a>
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @if($primarySection->show_ads==1)
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="ne-banner-layout1 mt-20-r text-center">
+                                                @if($primarySection->ads->ad_type=='code')
+                                                    {!! $primarySection->ads->ad_code !!}
+                                                @elseif($primarySection->ads->ad_type=='image')
+                                                    <a href="{{ $primarySection->ads->ad_url }}" target="_blank">
+                                                        <img
+                                                            data-original="@if(isset($primarySection->ads)) {{ url('public') }}/{{$primarySection->ads->ad_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                                            alt="ad" class="img-fluid">
+                                                    </a>
+                                                @elseif($primarySection->ads->ad_type=='text')
+                                                    {!! $primarySection->ads->ad_text !!}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @elseif($primarySection->section_style=='style_4')
+                                <div class="row tab-space1 mb-25">
+                                    <div class="col-12">
+                                        <div class="topic-border color-apple mb-30 width-100">
+                                            <div
+                                                class="topic-box-lg @if($i%2==0) color-cinnabar @else color-apple @endif ">{{ $primarySection->category->name }}</div>
+                                        </div>
+                                    </div>
+                                    @foreach($primarySection->category->post as $catPost)
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                                            <div class="img-overlay-70 img-scale-animate mb-2">
+                                                <div class="mask-content-xs">
+                                                    <div class="post-date-light">
+                                                        <ul>
+                                                            <li>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </span>{{ date('M d, Y',strtotime($catPost->updated_at)) }}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <h3 class="title-medium-light">
+                                                        <a href="{{ url('story',$catPost->slug) }}">{{ $catPost->title }}</a>
+                                                    </h3>
+                                                </div>
+                                                <img
+                                                    data-original="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                                    alt="{{ $catPost->title }}" class="img-fluid width-100">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
+                    <div class="sidebar-box item-box-light-md">
+                        <div class="topic-border color-cinnabar mb-30">
+                            <div class="topic-box-lg color-cinnabar">Stay Connected</div>
+                        </div>
+                        <ul class="stay-connected-color overflow-hidden">
+                            <li class="facebook">
+                                <a href="#">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    <div class="connection-quantity">50.2 k</div>
+                                    <p>Fans</p>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    <div class="connection-quantity">10.3 k</div>
+                                    <p>Followers</p>
+                                </a>
+                            </li>
+                            <li class="linkedin">
+                                <a href="#">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    <div class="connection-quantity">25.4 k</div>
+                                    <p>Fans</p>
+                                </a>
+                            </li>
+                            <li class="rss">
+                                <a href="#">
+                                    <i class="fa fa-rss" aria-hidden="true"></i>
+                                    <div class="connection-quantity">20.8 k</div>
+                                    <p>Subscriber</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box item-box-light-md-less30">
+                        <ul class="btn-tab item-inline block-xs nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Recent</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#popular" data-toggle="tab" aria-expanded="false">Popular</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#common" data-toggle="tab" aria-expanded="false">Common</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active show" id="recent">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="popular">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="common">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="ne-banner-layout1 mt-20-r text-center">
+                        <a href="#">
+                            <img src="http://blog.clickdimensions.com/wp-content/uploads/2017/05/BlogFeatureImage-5-Types-of-Online-Advertising-to-Generate-Leads.png" alt="ad" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-space-bottom-less30">
+        <div class="container mt-10">
+
+                <div class="item-box-light-md-less10">
+                    <div class="row">
+                @php
+                    $sectionCollection=collect($primarySections);
+                    $sections=$sectionCollection->where('type',1)->where('label','center')->all();
+                @endphp
+                @foreach($sections as $centerSection)
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="topic-border color-cutty-sark mb-30 width-100">
+                            <div class="topic-box-lg color-cutty-sark">
+                                @if(isset($centerSection->sub_category))
+                                    {{ @$centerSection->sub_category->name }}
+                                @else
+                                    {{ @$centerSection->category->name }}
+                                @endif
+                            </div>
+                        </div>
+                        <?php
+                        $arrayID = 0;
+                        ?>
+                        @foreach($centerSection->sub_category->post as $key=>$scatPost)
+
+                            <div class="img-overlay-70 img-scale-animate mb-30">
+                                <div class="mask-content-sm">
+                                    <div class="post-date-light">
+                                        <ul>
+                                            <li>
+                                                <span>by</span>
+                                                <a href="#">{{ $scatPost->user->name }}</a>
+                                            </li>
+                                            <li>
+                                                <span>
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>{{ date('M d, Y',strtotime($scatPost->updated_at)) }}</li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="title-medium-light">
+                                        <a href="{{ url('story',$scatPost->slug) }}">{{ $scatPost->title }}</a>
+                                    </h3>
+                                </div>
+                                <img
+                                    data-original="@if(isset($scatPost->imageGallery)) {{ url('public') }}/{{$scatPost->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                    alt="{{ $scatPost->title }}" class="img-fluid width-100">
+                            </div>
+                            @if($key==0)
+                                <?php
+                                $arrayID = $scatPost->id;
+                                ?>
+                                @break
+                            @endif
+                        @endforeach
+                        @foreach($centerSection->sub_category->post()->where('id','!=',$arrayID)->get() as $key=>$scatPost1)
+                            <div class="media mb-30">
+                                <a class="img-opacity-hover" href="{{ url('story',$scatPost1->slug) }}l">
+                                    <img
+                                        data-original="@if(isset($scatPost1->imageGallery)) {{ url('public') }}/{{$scatPost1->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                        alt="{{ $scatPost1->title }}" class="img-fluid">
+                                </a>
+                                <div class="media-body">
+                                    <div class="post-date-dark">
+                                        <ul>
+                                            <li>
+                                                <span>
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>{{ date('M d, Y',strtotime($scatPost1->updated_at)) }}</li>
+                                        </ul>
+                                    </div>
+                                    <h3 class="title-medium-dark size-md mb-none">
+                                        <a href="{{ url('story',$scatPost1->slug) }}">{{ $scatPost1->title }}</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                    @if($centerSection->show_ads==1)
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="ne-banner-layout1 mt-20-r text-center">
+                                    @if($centerSection->ads->ad_type=='code')
+                                        {!! $centerSection->ads->ad_code !!}
+                                    @elseif($centerSection->ads->ad_type=='image')
+                                        <a href="{{ $centerSection->ads->ad_url }}" target="_blank">
+                                            <img
+                                                data-original="@if(isset($centerSection->ads)) {{ url('public') }}/{{$centerSection->ads->ad_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                                alt="ad" class="img-fluid">
+                                        </a>
+                                    @elseif($centerSection->ads->ad_type=='text')
+                                        {!! $centerSection->ads->ad_text !!}
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+
+            </div>
+            </div>
+<div class="item-box-light-md-less10 mt-10">
+
+            @php
+                $sectionCollection=collect($primarySections);
+$sections=$sectionCollection->where('type',1)->where('label','bottom')->all();
+$i=1;
+            @endphp
+            <div class="ne-isotope">
+                @foreach($sections as $primarySection)
+                    <?php
+                    $i++;
+                    ?>
+                    @if($primarySection->section_style=='style_3')
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="topic-border @if($i%2==0) color-cinnabar @else color-apple @endif mb-30">
+                                    <div
+                                        class="topic-box-lg @if($i%2==0) color-cinnabar @else color-apple @endif">{{ $primarySection->category->name }}</div>
+                                    <div class="isotope-classes-tab isotop-btn">
+                                        @if(isset($primarySection->category->subCategoriesBody))
+                                            @foreach($primarySection->category->subCategoriesBody as $key=>$subcategory)
+                                                <a href="#"
+                                                   data-filter=".{{ $subcategory->slug }}"
+                                                   @if($key==0) class="current" @endif>{{ $subcategory->name }}</a>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                    <div class="more-info-link">
+                                        <a href="{{ url('category',$primarySection->category->slug) }}">More
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featuredContainer">
+                            @foreach($primarySection->category->subCategoriesBody as $sub_catPost)
+                                <div class="row  {{ $sub_catPost->slug }}">
+                                    @foreach($sub_catPost->post as $key=>$scatPost)
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-4 col-6">
+                                            <div class="mb-25 position-relative">
+                                                <a class="img-opacity-hover" href="{{ url('story',$scatPost->slug) }}">
+                                                    <img
+                                                        data-original="@if(isset($scatPost->imageGallery)) {{ url('public') }}/{{$scatPost->imageGallery->medium_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                                        alt="{{ $scatPost->title }}" class="img-fluid width-100 mb-15">
+                                                </a>
+                                                <div class="topic-box-top-xs">
+                                                    <div
+                                                        class="topic-box-sm color-cod-gray mb-20">{{ $scatPost->subcategory->name }}</div>
+                                                </div>
+                                                <div class="post-date-dark">
+                                                    <ul>
+                                                        <li>
+                                                            <span>
+                                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            </span>{{ date('M d, Y',strtotime($scatPost->updated_at)) }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <h3 class="title-medium-dark size-md">
+                                                    <a href="{{ url('story',$scatPost->slug) }}">{{ $scatPost->title }}</a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <section class="section-space-bottom-less30">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-12 mb-30">
+                    <div class="item-box-light-md-less30 ie-full-width">
+                        <div class="topic-border color-cinnabar mb-30">
+                            <div class="topic-box-lg color-cinnabar">Latest POST</div>
+                        </div>
+                        <div class="row">
+                            @foreach($latestPost as $post)
+                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                <div class="media media-none--md mb-30">
+                                    <div class="position-relative width-40">
+                                        <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover">
+                                            <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                        </a>
+                                        <div class="topic-box-top-xs">
+                                            <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="media-body p-mb-none-child media-margin30">
+                                        <div class="post-date-dark">
+                                            <ul>
+                                                <li>
+                                                    <span>by</span>
+                                                    <a href="/">{{ $post->user->name }}</a>
+                                                </li>
+                                                <li>
+                                                            <span>
+                                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="title-semibold-dark size-lg mb-15">
+                                            <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a>
+                                        </h3>
+                                        <p>
+                                            <?php
+                                            $stringem=$post->sub_content;
+                                            $a=array("\r\n", "\n", "\r");
+                                            $replace='';
+                                            $abouten=str_replace($a, $replace, $stringem);
+                                            if (strlen($abouten) > 100){
+                                                $str = substr($abouten, 0, 100) . '...';
+                                            }else{
+                                                $str = substr($abouten, 0, 100) . '...';
+                                            }
+
+                                            print  '<span style="">'.$str.'</span>';
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
+                    <div class="sidebar-box item-box-light-md">
+                        <div class="topic-border color-cinnabar mb-30">
+                            <div class="topic-box-lg color-cinnabar">Stay Connected</div>
+                        </div>
+                        <ul class="stay-connected-color overflow-hidden">
+                            <li class="facebook">
+                                <a href="#">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    <div class="connection-quantity">50.2 k</div>
+                                    <p>Fans</p>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    <div class="connection-quantity">10.3 k</div>
+                                    <p>Followers</p>
+                                </a>
+                            </li>
+                            <li class="linkedin">
+                                <a href="#">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    <div class="connection-quantity">25.4 k</div>
+                                    <p>Fans</p>
+                                </a>
+                            </li>
+                            <li class="rss">
+                                <a href="#">
+                                    <i class="fa fa-rss" aria-hidden="true"></i>
+                                    <div class="connection-quantity">20.8 k</div>
+                                    <p>Subscriber</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box item-box-light-md-less30">
+                        <ul class="btn-tab item-inline block-xs nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Recent</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#popular" data-toggle="tab" aria-expanded="false">Popular</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#common" data-toggle="tab" aria-expanded="false">Common</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active show" id="recent">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="popular">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="common">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                        <div class="position-relative">
+                                            <div class="topic-box-top-xs">
+                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
+                                            </div>
+                                            <a href="single-news-1.html" class="img-opacity-hover">
+                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            </a>
+                                            <h3 class="title-medium-dark size-sm mb-none">
+                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

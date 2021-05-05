@@ -103,6 +103,7 @@ class PostController extends Controller
 
             $post->user_id      = Auth::user()->id;
             $post->content      = $request->details;
+            $post->sub_content      = $request->sub_content;
 
             $post->visibility   = $request->visibility;
 
@@ -185,7 +186,6 @@ class PostController extends Controller
             return ReturnMessage::insertSuccess();
         }catch (QueryException $e){
             DB::rollBack();
-            return $e;
             return ReturnMessage::somethingWrong();
         }
 

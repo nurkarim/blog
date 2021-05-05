@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('content')->nullable();
+            $table->text('sub_content')->nullable();
             $table->string('language')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('post_type',['article','video'])->nullable();
