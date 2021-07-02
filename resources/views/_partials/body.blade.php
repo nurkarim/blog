@@ -574,14 +574,17 @@
                 <div class="item-box-light-md-less10">
                     <div class="row">
                 @php
+                $j=1;
                     $sectionCollection=collect($primarySections);
                     $sections=$sectionCollection->where('type',1)->where('label','center')->all();
                 @endphp
                 @foreach($sections as $centerSection)
-
+<?php
+                            $j++
+?>
                     <div class="col-lg-4 col-md-12">
-                        <div class="topic-border color-cutty-sark mb-30 width-100">
-                            <div class="topic-box-lg color-cutty-sark">
+                        <div class="topic-border @if($j%2==0) color-cinnabar @else color-apple @endif mb-30 width-100">
+                            <div class="topic-box-lg @if($j%2==0) color-cinnabar @else color-apple @endif">
                                 @if(isset($centerSection->sub_category))
                                     {{ @$centerSection->sub_category->name }}
                                 @else
