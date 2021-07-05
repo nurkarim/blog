@@ -86,7 +86,7 @@
                                         </ul>
                                     </div>
                                     <h3 class="title-medium-dark size-md mb-none">
-                                        <a title="{{ $post->title }}" href="{{ url('story',$post->slug) }}">{{ \Illuminate\Support\Str::limit($post->title,46) }}</a>
+                                        <a title="{{ $post->title }}" href="{{ url('story',$post->slug) }}">{{ \Illuminate\Support\Str::limit($post->title,43) }}</a>
                                     </h3>
                                 </div>
                             </div>
@@ -294,269 +294,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="sidebar-box item-box-light-md-less30">
-                        <ul class="btn-tab item-inline block-xs nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Recent</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#popular" data-toggle="tab" aria-expanded="false">Popular</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#common" data-toggle="tab" aria-expanded="false">Common</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade active show" id="recent">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="popular">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="common">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="ne-banner-layout1 mt-20-r text-center">
+                        <a href="#">
+                            <img src="http://blog.clickdimensions.com/wp-content/uploads/2017/05/BlogFeatureImage-5-Types-of-Online-Advertising-to-Generate-Leads.png" alt="ad" class="img-fluid">
+                        </a>
                     </div>
-
                     <div class="ne-banner-layout1 mt-20-r text-center">
                         <a href="#">
                             <img src="http://blog.clickdimensions.com/wp-content/uploads/2017/05/BlogFeatureImage-5-Types-of-Online-Advertising-to-Generate-Leads.png" alt="ad" class="img-fluid">
@@ -763,7 +505,7 @@ $i=1;
                                 <div class="media media-none--md mb-30">
                                     <div class="position-relative width-40">
                                         <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover">
-                                            <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                            <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
                                         </a>
                                         <div class="topic-box-top-xs">
                                             <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
@@ -792,7 +534,7 @@ $i=1;
                                             $replace='';
                                             $abouten=str_replace($a, $replace, $stringem);
                                             if (strlen($abouten) > 100){
-                                                $str = substr($abouten, 0, 100) . '...';
+                                                $str = substr($abouten, 0, 200) . '...';
                                             }else{
                                                 $str = substr($abouten, 0, 100) . '...';
                                             }
@@ -809,300 +551,57 @@ $i=1;
                     </div>
                 </div>
                 <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
-                    <div class="sidebar-box item-box-light-md">
-                        <div class="topic-border color-cinnabar mb-30">
-                            <div class="topic-box-lg color-cinnabar">Stay Connected</div>
-                        </div>
-                        <ul class="stay-connected-color overflow-hidden">
-                            <li class="facebook">
-                                <a href="#">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <div class="connection-quantity">50.2 k</div>
-                                    <p>Fans</p>
-                                </a>
-                            </li>
-                            <li class="twitter">
-                                <a href="#">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    <div class="connection-quantity">10.3 k</div>
-                                    <p>Followers</p>
-                                </a>
-                            </li>
-                            <li class="linkedin">
-                                <a href="#">
-                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                    <div class="connection-quantity">25.4 k</div>
-                                    <p>Fans</p>
-                                </a>
-                            </li>
-                            <li class="rss">
-                                <a href="#">
-                                    <i class="fa fa-rss" aria-hidden="true"></i>
-                                    <div class="connection-quantity">20.8 k</div>
-                                    <p>Subscriber</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="sidebar-box item-box-light-md-less30">
                         <ul class="btn-tab item-inline block-xs nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Recent</a>
+                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Featured</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#popular" data-toggle="tab" aria-expanded="false">Popular</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#common" data-toggle="tab" aria-expanded="false">Common</a>
+                                <a href="#popular" data-toggle="tab" aria-expanded="false">Recommended</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade active show" id="recent">
                                 <div class="row">
+                                    @foreach($latestPost->where('featured',1) as $featured)
                                     <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
                                         <div class="position-relative">
                                             <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
+                                                <div class="topic-box-sm color-cod-gray mb-20">{{ @$featured->category->name }}</div>
                                             </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
+                                            <a href="{{ url('story',$featured->slug) }}" class="img-opacity-hover">
+                                                <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->title }}" class="img-fluid width-100 mb-10">
                                             </a>
                                             <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
+                                                <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
                                             </h3>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
+                                        @endforeach
+
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane fade" id="popular">
                                 <div class="row">
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
+                                    @foreach($latestPost->where('recommended',1) as $recommended)
+                                        <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
+                                            <div class="position-relative">
+                                                <div class="topic-box-top-xs">
+                                                    <div class="topic-box-sm color-cod-gray mb-20">{{ @$recommended->category->name }}</div>
+                                                </div>
+                                                <a href="{{ url('story',$recommended->slug) }}" class="img-opacity-hover">
+                                                    <img src="@if(isset($recommended->imageGallery)) {{ url('public') }}/{{$recommended->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $recommended->title }}" class="img-fluid width-100 mb-10">
+                                                </a>
+                                                <h3 class="title-medium-dark size-sm mb-none">
+                                                    <a href="{{ url('story',$recommended->slug) }}">{{ $recommended->title }}</a>
+                                                </h3>
                                             </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="common">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Fastfood</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news302.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Desert</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news303.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Food</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news298.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Pizza</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news299.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Chines</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news300.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">Rosie Hutin ghton Habits Career.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">Drinks</div>
-                                            </div>
-                                            <a href="single-news-1.html" class="img-opacity-hover">
-                                                <img src="img/news/news301.jpg" alt="news" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="single-news-1.html">3 Students Arrested After Body.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
