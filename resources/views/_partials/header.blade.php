@@ -1,7 +1,4 @@
 
-<title>Laradevs - @yield('title')</title>
-@yield('meta')
-
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 <!-- Normalize CSS -->
 <link rel="stylesheet" href="{{ url('public') }}/css/normalize.css">

@@ -1,36 +1,6 @@
 @extends('index')
-@section('title')
-    Online learing programimmng language- see demo in laradevsbd.com
-@endsection
-@section('meta')
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="google-site-verification" content="sx_2q7hM5RYz2ENt7N7R7G_8bRblRvHxA7nENHaId9o"/>
-    <meta name="yandex-verification" content="1abb94c99b444464"/>
-    <link rel="shortcut icon" type="image/png" href="">
-    <meta name="p:domain_verify" content="f9af85b662cce44b54e98146f7d73d11">
-    <meta name="description"
-          content="laradevsbd website focuses on all web language and framework tutorial PHP, Laravel, Codeigniter, Nodejs, API, MySQL, AJAX, jQuery, JavaScript, Demo">
-    <meta name="keywords"
-          content="laradevsbd of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, HTML, CSS, git, AJAX, bootstrap,  jQuery, JavaScript, Designing, Demo, laradevs bd.">
-    <meta name="twitter:image" content="https://www.laradevsbd.com/upload/laradevsbd.png">
-    <link rel="canonical" href="https://www.laradevsbd.com">
-    <meta property="og:description"
-          content="laradevsbd website focuses on all web language and framework tutorial PHP, Laravel, Codeigniter, Nodejs, API, MySQL, AJAX, jQuery, JavaScript, Demo">
-    <meta property="og:title" content="Laradevs bd - Tutorial It Language Site | See Demo Example">
-    <meta property="og:url" content="https://www.laradevsbd.com">
-    <meta property="og:image:url" content="https://www.laradevsbd.com/upload/laradevsbd.png">
-
-    <meta content="https://www.facebook.com/rezban.khan" property="article:publisher">
-    <meta content="https://www.facebook.com/rezban.khan" property="article:author">
-    <meta content="Nur Karim" name="author">
-    <meta name="twitter:title" content="Laradevs bd - Tutorial It Language Site | See Demo Example">
-    <meta name="twitter:site" content="https://www.laradevsbd.com">
-    <meta name="twitter:description"
-          content="laradevsbd website focuses on all web language and framework tutorial PHP, Laravel, Codeigniter, Nodejs, API, MySQL, AJAX, jQuery, JavaScript, Demo">
-@endsection
 @section('content')
+    @include('_partials.headline')
     <section class="section-space-bottom">
         <div class="container">
             <div class="row no-gutters">
@@ -491,18 +461,18 @@ $i=1;
 
         </div>
     </section>
-    <section class="section-space-bottom-less30">
+    <section class="bg-accent section-space-less30">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-12 mb-30">
-                    <div class="item-box-light-md-less30 ie-full-width">
+                    <div class="ie-full-width" style="background: transparent">
                         <div class="topic-border color-cinnabar mb-30">
                             <div class="topic-box-lg color-cinnabar">Latest POST</div>
                         </div>
                         <div class="row">
                             @foreach($latestPost as $post)
-                            <div class="col-lg-12 col-md-6 col-sm-12">
-                                <div class="media media-none--md mb-30">
+                            <div class="col-lg-12 col-md-6 col-sm-12 ">
+                                <div class="media media-none--md mb-30 box-shadow bg-white">
                                     <div class="position-relative width-40">
                                         <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover">
                                             <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
@@ -512,21 +482,19 @@ $i=1;
                                         </div>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
+                                        <h3 class="title-semibold-dark size-lg mb-5" style="margin-top: 10px">
+                                            <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a>
+                                        </h3>
                                         <div class="post-date-dark">
                                             <ul>
                                                 <li>
-                                                    <span>by</span>
-                                                    <a href="/">{{ $post->user->name }}</a>
+                                                    <a href="/">Post By {{ $post->user->name }}</a>
                                                 </li>
-                                                <li>
-                                                            <span>
-                                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                <li><span><i class="fa fa-calendar" aria-hidden="true"></i>
                                                             </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
                                             </ul>
                                         </div>
-                                        <h3 class="title-semibold-dark size-lg mb-15">
-                                            <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a>
-                                        </h3>
+
                                         <p>
                                             <?php
                                             $stringem=$post->sub_content;
@@ -551,59 +519,64 @@ $i=1;
                     </div>
                 </div>
                 <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
-                    <div class="sidebar-box item-box-light-md-less30">
-                        <ul class="btn-tab item-inline block-xs nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a href="#recent" data-toggle="tab" aria-expanded="true" class="active">Featured</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#popular" data-toggle="tab" aria-expanded="false">Recommended</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade active show" id="recent">
-                                <div class="row">
-                                    @foreach($latestPost->where('featured',1) as $featured)
-                                    <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                        <div class="position-relative">
-                                            <div class="topic-box-top-xs">
-                                                <div class="topic-box-sm color-cod-gray mb-20">{{ @$featured->category->name }}</div>
-                                            </div>
-                                            <a href="{{ url('story',$featured->slug) }}" class="img-opacity-hover">
-                                                <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->title }}" class="img-fluid width-100 mb-10">
-                                            </a>
-                                            <h3 class="title-medium-dark size-sm mb-none">
-                                                <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
-                                            </h3>
-                                        </div>
+
+                    <div class="sidebar-box">
+                        <div class="topic-border color-cod-gray mb-30">
+                            <div class="topic-box-lg color-cod-gray">Featured Post</div>
+                        </div>
+                        <div class="d-inline-block">
+                            @foreach($latestPost->where('featured',1) as $featured)
+                            <div class="media mb30-list bg-body box-shadow">
+                                <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
+                                    <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                </a>
+                                <div class="media-body media-padding15">
+                                    <div class="post-date-dark">
+                                        <ul>
+                                            <li>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
+                                        </ul>
                                     </div>
-                                        @endforeach
-
+                                    <h3 class="title-medium-dark mb-none">
+                                        <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
+                                    </h3>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="popular">
-                                <div class="row">
-                                    @foreach($latestPost->where('recommended',1) as $recommended)
-                                        <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 col-6 mb-25">
-                                            <div class="position-relative">
-                                                <div class="topic-box-top-xs">
-                                                    <div class="topic-box-sm color-cod-gray mb-20">{{ @$recommended->category->name }}</div>
-                                                </div>
-                                                <a href="{{ url('story',$recommended->slug) }}" class="img-opacity-hover">
-                                                    <img src="@if(isset($recommended->imageGallery)) {{ url('public') }}/{{$recommended->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $recommended->title }}" class="img-fluid width-100 mb-10">
-                                                </a>
-                                                <h3 class="title-medium-dark size-sm mb-none">
-                                                    <a href="{{ url('story',$recommended->slug) }}">{{ $recommended->title }}</a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
+
+                    <div class="sidebar-box">
+                        <div class="topic-border color-cod-gray mb-30">
+                            <div class="topic-box-lg color-cod-gray">Recommended Post</div>
+                        </div>
+                        <div class="d-inline-block">
+                            @foreach($latestPost->where('recommended',1) as $featured)
+                                <div class="media mb30-list bg-body box-shadow">
+                                    <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
+                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                    </a>
+                                    <div class="media-body media-padding15">
+                                        <div class="post-date-dark">
+                                            <ul>
+                                                <li>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="title-medium-dark mb-none">
+                                            <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

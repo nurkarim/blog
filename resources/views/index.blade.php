@@ -6,9 +6,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Laradevs | @yield('title')</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="p:domain_verify" content="f9af85b662cce44b54e98146f7d73d11">
+    <meta name="google-site-verification" content="sx_2q7hM5RYz2ENt7N7R7G_8bRblRvHxA7nENHaId9o"/>
+    <meta name="yandex-verification" content="1abb94c99b444464"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/png" href="">
+    {!! SEO::generate() !!}
+    <meta content="https://github.com/nurkarim" property="article:publisher">
+    <meta content="https://github.com/nurkarim" property="article:author">
+    <meta content="Nur Karim" name="author">
     <!-- Favicon -->
 @include('_partials.header')
 
@@ -22,7 +29,7 @@
     <header>
         <div id="header-layout2" class="header-style7">
             @include('_partials.timezone')
-            <div class="main-menu-area bg-body border-bottom" id="sticker">
+            <div class="main-menu-area bg-body border-bottom box-shadow" id="sticker">
                 <div class="container">
                     <div class="row no-gutters d-flex align-items-center">
                         <div class="col-lg-2 col-md-2 d-none d-lg-block">
@@ -74,11 +81,7 @@
             </div>
         </div>
     </header>
-    <!-- Header Area End Here -->
-    <!-- News Feed Area Start Here -->
-    @include('_partials.headline')
-    <!-- News Feed Area End Here -->
-    <!-- Slider Area Start Here -->
+
     @yield('content')
 
     <footer>

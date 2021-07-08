@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontController@index');
+Route::get('/category/{slug}', 'FrontController@category');
+Route::get('/story/{slug}', 'FrontController@details');
+
 
 Auth::routes();
 
