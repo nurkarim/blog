@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\UserMeta;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -33,5 +34,10 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();
+    }
+
+    public function userMeta()
+    {
+        return $this->hasOne(UserMeta::class,'user_id');
     }
 }

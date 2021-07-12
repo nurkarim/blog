@@ -90,9 +90,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a href="/" class="footer-logo img-fluid">
-                            <img src="http://amarsomoy24.com/public/images/20201204024804_logo_39.png" alt="logo" class="img-fluid">
-                        </a>
                         <ul class="footer-social">
                             <li>
                                 <a href="#" title="facebook">
@@ -130,7 +127,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <p>© 2017 newsedge Designed by RadiusTheme. All Rights Reserved</p>
+                        <p>© {{ date('Y') }} Designed by Nur Karim. All Rights Reserved</p>
                     </div>
                 </div>
             </div>

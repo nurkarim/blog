@@ -264,15 +264,23 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="ne-banner-layout1 mt-20-r text-center">
-                        <a href="#">
-                            <img src="http://blog.clickdimensions.com/wp-content/uploads/2017/05/BlogFeatureImage-5-Types-of-Online-Advertising-to-Generate-Leads.png" alt="ad" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="ne-banner-layout1 mt-20-r text-center">
-                        <a href="#">
-                            <img src="http://blog.clickdimensions.com/wp-content/uploads/2017/05/BlogFeatureImage-5-Types-of-Online-Advertising-to-Generate-Leads.png" alt="ad" class="img-fluid">
-                        </a>
+                    <div class="sidebar-box">
+                        <div class="topic-border color-cod-gray mb-30">
+                            <div class="topic-box-lg color-cod-gray">Newsletter</div>
+                        </div>
+                        <div class="newsletter-area bg-white widget-newsletter">
+                            <h2 class="title-medium-light size-xl pl-30 pr-30 text-dark">Subscribe to our mailing list
+                                to get the new updates!</h2>
+                            <i class="fa fa-envelope-o  icon"></i>
+                            <div class="input-group stylish-input-group">
+                                <input type="text" placeholder="Enter your mail" class="form-control">
+                                <span class="input-group-addon">
+                                            <button type="submit">
+                                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                            </button>
+                                        </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -520,33 +528,7 @@ $i=1;
                 </div>
                 <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
 
-                    <div class="sidebar-box">
-                        <div class="topic-border color-cod-gray mb-30">
-                            <div class="topic-box-lg color-cod-gray">Featured Post</div>
-                        </div>
-                        <div class="d-inline-block">
-                            @foreach($latestPost->where('featured',1) as $featured)
-                            <div class="media mb30-list bg-body box-shadow">
-                                <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
-                                    <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
-                                </a>
-                                <div class="media-body media-padding15">
-                                    <div class="post-date-dark">
-                                        <ul>
-                                            <li>
-                                                        <span>
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="title-medium-dark mb-none">
-                                        <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
-                                    </h3>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+
 
                     <div class="sidebar-box">
                         <div class="topic-border color-cod-gray mb-30">

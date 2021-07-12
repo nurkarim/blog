@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('language')->nullable();
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('view_order')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();

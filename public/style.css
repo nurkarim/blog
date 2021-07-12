@@ -5058,7 +5058,7 @@ ul.stay-connected-light .rss i {
     text-transform: lowercase;
     color: #444;
     height: 42px;
-    background-color: #fff;
+    background-color: #f9f9f9;
     border-radius: 4px 0 0 4px;
     font-size: 15px
 }
@@ -6348,7 +6348,7 @@ footer .footer-box ul.post-gallery figure:hover::before {
 }
 
 footer .footer-area-bottom {
-    padding: 60px 0 50px
+    padding: 22px 0 10px;
 }
 
 footer .footer-area-bottom .footer-logo {

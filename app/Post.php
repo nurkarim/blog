@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\GalleryImage;
 use App\Models\Language;
+use App\Models\PostComment;
 use App\Models\SubCategory;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
@@ -41,5 +42,10 @@ class Post extends Model
     public function video()
     {
         return $this->belongsTo(Video::class,'video_id');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(PostComment::class,'post_id');
     }
 }
