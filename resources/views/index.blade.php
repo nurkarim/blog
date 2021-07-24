@@ -239,6 +239,7 @@
     <!-- Offcanvas Menu End -->
 </div>
 @include('_partials.footer')
+
 </body>
 
 </html>

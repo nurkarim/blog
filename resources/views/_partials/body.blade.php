@@ -528,8 +528,6 @@ $i=1;
                 </div>
                 <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
 
-
-
                     <div class="sidebar-box">
                         <div class="topic-border color-cod-gray mb-30">
                             <div class="topic-box-lg color-cod-gray">Recommended Post</div>

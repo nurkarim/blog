@@ -4,23 +4,18 @@
         <div class="container">
             <div class="breadcrumbs-content">
                 <h1>{{ $category->name }}</h1>
-                <ul>
-                    <li>
-                        <a href="/">Home</a> -</li>
-                    <li>All Posts</li>
-                </ul>
             </div>
         </div>
     </section>
 
-    <section class="bg-body section-space-less30">
+    <section class="bg-body-section section-space-less30">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <div class="row">
                         @foreach($data as $post)
                         <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12">
-                            <div class="media media-none--lg mb-30">
+                            <div class="media media-none--lg mb-30 bg-white">
                                 <div class="position-relative width-40">
                                     <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover img-overlay-70">
                                         <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
@@ -29,8 +24,9 @@
                                         <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
                                     </div>
                                 </div>
+
                                 <div class="media-body p-mb-none-child media-margin30">
-                                    <h3 class="title-semibold-dark size-lg mb-15">
+                                    <h3 class="title-semibold-dark size-lg mb-15 mt-2">
                                         <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a> </h3>
                                     <div class="post-date-dark">
                                         <ul>
@@ -81,48 +77,44 @@
                             <li class="facebook">
                                 <a href="#">
                                     <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <div class="connection-quantity">50.2 k</div>
-                                    <p>Fans</p>
+
                                 </a>
                             </li>
                             <li class="twitter">
                                 <a href="#">
                                     <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    <div class="connection-quantity">10.3 k</div>
-                                    <p>Followers</p>
+
                                 </a>
                             </li>
                             <li class="linkedin">
                                 <a href="#">
                                     <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                    <div class="connection-quantity">25.4 k</div>
-                                    <p>Fans</p>
+
                                 </a>
                             </li>
                             <li class="rss">
                                 <a href="#">
                                     <i class="fa fa-rss" aria-hidden="true"></i>
-                                    <div class="connection-quantity">20.8 k</div>
-                                    <p>Subscriber</p>
+
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <div class="sidebar-box">
-                        <div class="ne-banner-layout1 text-center">
-                            <a href="#">
-                                <img src="img/banner/banner3.jpg" alt="ad" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="sidebar-box">--}}
+{{--                        <div class="ne-banner-layout1 text-center">--}}
+{{--                            <a href="#">--}}
+{{--                                <img src="img/banner/banner3.jpg" alt="ad" class="img-fluid">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="sidebar-box">
                         <div class="topic-border color-cod-gray mb-30">
                             <div class="topic-box-lg color-cod-gray">Newsletter</div>
                         </div>
-                        <div class="newsletter-area bg-primary">
-                            <h2 class="title-medium-light size-xl pl-30 pr-30">Subscribe to our mailing list to get the new updates!</h2>
-                            <img src="img/banner/newsletter.png" alt="newsletter" class="img-fluid m-auto mb-15">
-                            <p>Subscribe our newsletter to stay updated</p>
+                        <div class="newsletter-area bg-white widget-newsletter">
+                            <h2 class="title-medium-light size-xl pl-30 pr-30 text-dark">Subscribe to our mailing list
+                                to get the new updates!</h2>
+                            <i class="fa fa-envelope-o  icon"></i>
                             <div class="input-group stylish-input-group">
                                 <input type="text" placeholder="Enter your mail" class="form-control">
                                 <span class="input-group-addon">

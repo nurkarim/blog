@@ -25,7 +25,7 @@ class SettingsHelper
 
     public static function menus()
     {
-        return MenuItems::query()->where('status',1)->orderBy('view_order')->get();
+        return MenuItems::query()->with('category.subCategory')->where('status',1)->orderBy('view_order')->get();
     }
 
     public function headline()
