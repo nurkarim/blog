@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontController@index')->middleware('pageSpeed');
 Route::get('/category/{slug}', 'FrontController@category')->middleware('pageSpeed');
-Route::get('/story/{slug}', 'FrontController@details')->middleware('pageSpeed');
+Route::get('/story/{slug}', 'FrontController@details');
 
 
 Auth::routes();
