@@ -12,7 +12,7 @@ class SeedSettings extends Seeder
         Setting::query()->truncate();
         Setting::create(['title' => 'default_language' , 'value' => 'en', 'lang' => 'en' ]);
         Setting::create(['title' => 'timezone' , 'value' => 'Asia/Dhaka', 'lang' => 'en' ]);
-        Setting::create(['title' => 'application_name' , 'value' => 'ONNO', 'lang' => 'en' ]);
+        Setting::create(['title' => 'application_name' , 'value' => 'LaradevsBD', 'lang' => 'en' ]);
 
         //mail
         Setting::create(['title' => 'mail_driver', 'value' => 'xxxx', 'lang' => 'en' ]);

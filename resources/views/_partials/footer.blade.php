@@ -1,5 +1,4 @@
 
-
 <!-- jquery-->
 <script src="{{ url('public') }}/js/jquery-2.2.4.min.js" type="text/javascript"></script>
 <!-- Plugins js -->
@@ -30,11 +29,5 @@
 <script src="{{ url('public') }}/js/ticker.js" type="text/javascript"></script>
 <!-- Custom Js -->
 <script src="{{ url('public') }}/js/main.js" type="text/javascript"></script>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
-<script type="text/javascript">
-    $("img").lazyload({
-        effect : "fadeIn"
-    });
-</script>
+<script src="{{ url('public') }}/js/custom.js" type="text/javascript"></script>

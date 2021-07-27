@@ -67,19 +67,20 @@
             </div>
         </div>
     </section>
+    @php
+        $sectionCollection=collect($primarySections);
+$sections=$sectionCollection->where('type',1)->where('label','top')->all();
+$i=1;
+    @endphp
 
-
+    @if(count($sections)>0)
 
     <section class="section-space-bottom-less30">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-12 mb-30">
                     <div class="item-box-light-md">
-                        @php
-                            $sectionCollection=collect($primarySections);
-            $sections=$sectionCollection->where('type',1)->where('label','top')->all();
-            $i=1;
-                        @endphp
+
                         @foreach($sections as $primarySection)
                             <?php
                             $i++;
@@ -237,28 +238,27 @@
                             <li class="facebook">
                                 <a href="#">
                                     <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <div class="connection-quantity">50.2 k</div>
                                     <p>Fans</p>
                                 </a>
                             </li>
                             <li class="twitter">
                                 <a href="#">
                                     <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    <div class="connection-quantity">10.3 k</div>
+
                                     <p>Followers</p>
                                 </a>
                             </li>
                             <li class="linkedin">
                                 <a href="#">
                                     <i class="fa fa-linkedin" aria-hidden="true"></i>
-                                    <div class="connection-quantity">25.4 k</div>
+
                                     <p>Fans</p>
                                 </a>
                             </li>
                             <li class="rss">
                                 <a href="#">
                                     <i class="fa fa-rss" aria-hidden="true"></i>
-                                    <div class="connection-quantity">20.8 k</div>
+
                                     <p>Subscriber</p>
                                 </a>
                             </li>
@@ -287,17 +287,19 @@
 
         </div>
     </section>
-
+@endif
+    @php
+        $j=1;
+            $sectionCollection=collect($primarySections);
+            $sections=$sectionCollection->where('type',1)->where('label','center')->all();
+    @endphp
+    @if(count($sections)>0)
     <section class="section-space-bottom-less30">
         <div class="container mt-10">
 
                 <div class="item-box-light-md-less10">
                     <div class="row">
-                @php
-                $j=1;
-                    $sectionCollection=collect($primarySections);
-                    $sections=$sectionCollection->where('type',1)->where('label','center')->all();
-                @endphp
+
                 @foreach($sections as $centerSection)
 <?php
                             $j++
@@ -469,6 +471,7 @@ $i=1;
 
         </div>
     </section>
+@endif
     <section class="bg-accent section-space-less30">
         <div class="container">
             <div class="row">
@@ -480,7 +483,7 @@ $i=1;
                         <div class="row">
                             @foreach($latestPost as $post)
                             <div class="col-lg-12 col-md-6 col-sm-12 ">
-                                <div class="media media-none--md mb-30 box-shadow bg-white">
+                                <div class="media media-none--md mb-30  bg-white">
                                     <div class="position-relative width-40">
                                         <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover">
                                             <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
@@ -534,7 +537,7 @@ $i=1;
                         </div>
                         <div class="d-inline-block">
                             @foreach($latestPost->where('recommended',1) as $featured)
-                                <div class="media mb30-list bg-body box-shadow">
+                                <div class="media mb30-list bg-body ">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
                                         <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
                                     </a>

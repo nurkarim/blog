@@ -247,7 +247,7 @@
                         </div>
                         <div class="d-inline-block">
                             @foreach($latestPost as $featured)
-                                <div class="media mb30-list bg-body box-shadow">
+                                <div class="media mb30-list bg-body">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
                                         <img
                                             src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
@@ -294,7 +294,7 @@
                         </div>
                         <div class="d-inline-block">
                             @foreach($latestPost->where('featured',1) as $featured)
-                                <div class="media mb30-list bg-body box-shadow">
+                                <div class="media mb30-list bg-body ">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
                                         <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
                                     </a>

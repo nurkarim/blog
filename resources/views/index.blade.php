@@ -18,7 +18,23 @@
     <meta content="Nur Karim" name="author">
     <!-- Favicon -->
 @include('_partials.header')
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWNB5ZSHQ7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-FWNB5ZSHQ7');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PDDHLCP');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body>
@@ -103,7 +119,7 @@
                             </li>
                             <li>
                                 <a href="#" title="google-plus">
-                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li>
@@ -111,23 +127,11 @@
                                     <i class="fa fa-linkedin" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" title="pinterest">
-                                    <i class="fa fa-pinterest" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="rss">
-                                    <i class="fa fa-rss" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="vimeo">
-                                    <i class="fa fa-vimeo" aria-hidden="true"></i>
-                                </a>
-                            </li>
+
+
+
                         </ul>
-                        <p>© {{ date('Y') }} Designed by Nur Karim. All Rights Reserved</p>
+
                     </div>
                 </div>
             </div>
@@ -175,64 +179,29 @@
         </div>
         <div class="offcanvas-main-body">
             <ul id="accordion" class="offcanvas-nav panel-group">
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                            <i class="fa fa-home" aria-hidden="true"></i>Home Pages</a>
-                    </div>
-                    <div aria-expanded="false" id="collapseOne" role="tabpanel" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="offcanvas-sub-nav">
-                                <li>
-                                    <a href="index.html">Home 1</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+{{--                <li class="panel panel-default">--}}
+{{--                    <div class="panel-heading">--}}
+{{--                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">--}}
+{{--                            <i class="fa fa-file-text" aria-hidden="true"></i>Post Pages</a>--}}
+{{--                    </div>--}}
+{{--                    <div aria-expanded="false" id="collapseTwo" role="tabpanel" class="panel-collapse collapse">--}}
+{{--                        <div class="panel-body">--}}
+{{--                            <ul class="offcanvas-sub-nav">--}}
+{{--                                <li>--}}
+{{--                                    <a href="#">Post Style 1</a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+                @foreach(\App\Models\Category::query()->withCount('categorypost')->where('status',1)->get() as $category)
                 <li>
-                    <a href="#">
-                        <i class="fa fa-user" aria-hidden="true"></i>Author Post</a>
+                    <a href="{{ url('category') }}/{{ $category->slug }}">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>{{ $category->name }} ({{ $category->categorypost_count }})</a>
                 </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                            <i class="fa fa-file-text" aria-hidden="true"></i>Post Pages</a>
-                    </div>
-                    <div aria-expanded="false" id="collapseTwo" role="tabpanel" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="offcanvas-sub-nav">
-                                <li>
-                                    <a href="#">Post Style 1</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default">
-                    <div class="panel-heading">
-                        <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>News Details Pages</a>
-                    </div>
-                    <div aria-expanded="false" id="collapseThree" role="tabpanel" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="offcanvas-sub-nav">
-                                <li>
-                                    <a href="#">News Details 1</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-archive" aria-hidden="true"></i>Gallery</a>
-                </li>
+                @endforeach
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-phone" aria-hidden="true"></i>Contact</a>
-                </li>
+
             </ul>
         </div>
     </div>

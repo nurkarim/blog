@@ -62,7 +62,7 @@ class FrontController extends Controller
         $post=Post::query()->with(['category','subcategory','imageGallery','user','comment'])->where('slug',$slug)->firstOrFail();
         $url=url('/story',$slug);
         SEOMeta::addKeyword($post->meta_keywords);
-        SEOTools::setTitle($post->name);
+        SEOTools::setTitle($post->title);
         SEOTools::setDescription($post->meta_description);
         SEOTools::opengraph()->setUrl($url);
         SEOTools::setCanonical($url);
