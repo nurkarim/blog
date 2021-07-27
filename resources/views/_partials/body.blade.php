@@ -44,7 +44,7 @@
                             @foreach($latestPostTopRight as $post)
                             <div class="media mb-30 col-xl-12 col-lg-6 col-md-6 col-sm-12">
                                 <a class="img-opacity-hover" href="{{ url('story',$post->slug) }}">
-                                    <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
+                                    <img style="height: 100px;width: 120px;" src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
                                 </a>
                                 <div class="media-body media-padding5">
                                     <div class="post-date-dark">
