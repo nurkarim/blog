@@ -93,7 +93,7 @@ class GalleryController extends Controller
                     $imgThumbnail   = Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->encode('webp', 70);
                     $imgBig         = Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->encode('webp', 70);
                     $imgBigTwo      = Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->encode('webp', 70);
-                    $imgBigThree      = Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->encode('webp', 70);
+                    $imgBigThree    = Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->encode('webp', 70);
                     $imgMedium      = Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->encode('webp', 70);
                     $imgMediumTwo   = Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->encode('webp', 70);
                     $imgMediumThree = Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->encode('webp', 70);
