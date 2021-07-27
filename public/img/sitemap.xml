@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://laradevsbd.com/</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/laravel-framework</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/php-language</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/react</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/javascript</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/jquery</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/category/database</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/story/resize-images-in-laravel-with-spatie-media-library</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/story/laravel-send-web-push-notification-using-firebase</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/story/qr-code-generate-laravel-8</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://laradevsbd.com/story/laravel-yajra-datatables-export-to-excel-csv</loc>
+  <lastmod>2021-07-27T17:53:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
