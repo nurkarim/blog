@@ -9,7 +9,7 @@
                     <div class="news-details-layout1">
                         <div class="position-relative mb-30">
                             <img
-                                src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->big_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->original_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
                                 alt="news-details" class="img-fluid">
                             <div class="topic-box-top-sm">
                                 <div class="topic-box-sm color-cinnabar mb-20">{{ @$post->category->name }}</div>
@@ -39,13 +39,16 @@
                         <ul class="blog-tags item-inline">
                             <li>Tags</li>
                             <li>
-                                <a href="#">#Business</a>
+                                <a href="#">#Laravel</a>
                             </li>
                             <li>
-                                <a href="#">#Magazine</a>
+                                <a href="#">#Laravel7</a>
                             </li>
                             <li>
-                                <a href="#">#Lifestyle</a>
+                                <a href="#">#Laravel8</a>
+                            </li>
+                            <li>
+                                <a href="#">#PHP</a>
                             </li>
                         </ul>
                         <div class="post-share-area mb-40 item-shadow-1">
