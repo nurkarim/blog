@@ -66,19 +66,10 @@
                                 </li>
                                 <li>
                                     <a href="#" class="google">
-                                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="pinterest">
-                                        <i class="fa fa-pinterest" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="rss">
-                                        <i class="fa fa-rss" aria-hidden="true"></i>
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a href="#" class="linkedin">
                                         <i class="fa fa-linkedin" aria-hidden="true"></i>
@@ -324,19 +315,19 @@
                         </div>
                         <ul class="sidebar-tags">
                             <li>
-                                <a href="#">Apple</a>
+                                <a href="#">Laravel7</a>
                             </li>
                             <li>
-                                <a href="#">Business</a>
+                                <a href="#">Laravel8</a>
                             </li>
                             <li>
-                                <a href="#">Architecture</a>
+                                <a href="#">PHP</a>
                             </li>
                             <li>
-                                <a href="#">Gadgets</a>
+                                <a href="#">Jquery</a>
                             </li>
                             <li>
-                                <a href="#">Software</a>
+                                <a href="#">Bootstrap</a>
                             </li>
                             <li>
                                 <a href="#">Microsoft</a>
