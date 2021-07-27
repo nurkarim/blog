@@ -1081,7 +1081,8 @@ ul.item2-inline li:last-child {
 
 .img-opacity-hover {
     position: relative;
-    display: block
+    display: block;
+    border: 2px solid #e2e2e2;
 }
 
 .img-opacity-hover:after {
