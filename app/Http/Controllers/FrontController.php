@@ -69,7 +69,9 @@ class FrontController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite(env('APP_URL'));
         $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('id','!=',$post->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(6)->get();
-
+        $post->update(
+           [ 'total_view'=>$post->total_view+1]
+        );
         //https://github.com/artesaos/seotools
         return view('layouts.details',compact('post','latestPost'));
     }
