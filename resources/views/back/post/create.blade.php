@@ -268,6 +268,7 @@
 
     <script>
         $('#summernote').summernote();
+
         $(document).ready(function() {
             $('.tags').tagsinput({
                 maxTags: 5,
