@@ -19,13 +19,13 @@
     <!-- Favicon -->
 @include('_partials.header')
 <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWNB5ZSHQ7"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW5LSWZDX1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-FWNB5ZSHQ7');
+        gtag('config', 'G-WW5LSWZDX1');
     </script>
 
     <!-- Google Tag Manager -->
@@ -33,7 +33,7 @@
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PDDHLCP');</script>
+        })(window,document,'script','dataLayer','G-WW5LSWZDX1');</script>
     <!-- End Google Tag Manager -->
 </head>
 
