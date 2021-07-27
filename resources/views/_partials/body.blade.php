@@ -1,6 +1,6 @@
 @extends('index')
 @section('content')
-    @include('_partials.headline')
+{{--    @include('_partials.headline')--}}
     <section class="section-space-bottom">
         <div class="container">
             <div class="row no-gutters">
