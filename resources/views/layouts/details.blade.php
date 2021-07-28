@@ -298,7 +298,7 @@
                                                 <li>
                                                         <span>
                                                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
+                                                        </span>{{ date('M d, Y',strtotime($featured->updated_at)) }}</li>
                                             </ul>
                                         </div>
                                         <h3 class="title-medium-dark mb-none">
@@ -329,18 +329,7 @@
                             <li>
                                 <a href="#">Bootstrap</a>
                             </li>
-                            <li>
-                                <a href="#">Microsoft</a>
-                            </li>
-                            <li>
-                                <a href="#">Robotic</a>
-                            </li>
-                            <li>
-                                <a href="#">Technology</a>
-                            </li>
-                            <li>
-                                <a href="#">Others</a>
-                            </li>
+
                         </ul>
                     </div>
 

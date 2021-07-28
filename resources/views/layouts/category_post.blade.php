@@ -18,7 +18,7 @@
                             <div class="media media-none--lg mb-30 bg-white">
                                 <div class="position-relative width-40">
                                     <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover img-overlay-70">
-                                        <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                        <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
                                     </a>
                                     <div class="topic-box-top-xs">
                                         <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
@@ -131,32 +131,20 @@
                         </div>
                         <ul class="sidebar-tags">
                             <li>
-                                <a href="#">Apple</a>
+                                <a href="#">Laravel</a>
                             </li>
                             <li>
-                                <a href="#">Business</a>
+                                <a href="#">PHP</a>
                             </li>
                             <li>
-                                <a href="#">Architecture</a>
+                                <a href="#">Laravel 8</a>
                             </li>
                             <li>
-                                <a href="#">Gadgets</a>
+                                <a href="#">Laravel 7</a>
                             </li>
-                            <li>
-                                <a href="#">Software</a>
+                            <li><a href="#">MySql</a>
                             </li>
-                            <li>
-                                <a href="#">Microsoft</a>
-                            </li>
-                            <li>
-                                <a href="#">Robotic</a>
-                            </li>
-                            <li>
-                                <a href="#">Technology</a>
-                            </li>
-                            <li>
-                                <a href="#">Others</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

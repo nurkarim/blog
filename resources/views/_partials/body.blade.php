@@ -114,7 +114,7 @@ $i=1;
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="img-overlay-70 img-scale-animate mb-30">
                                                         <a href="{{ url('story',$catPost->slug) }}">
-                                                            <img src="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->big_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid width-100">
+                                                            <img src="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->big_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $catPost->title }}" class="img-fluid width-100">
                                                         </a>
                                                         <div class="mask-content-lg">
                                                             <div class="topic-box-sm color-cinnabar mb-20">{{ $sub_catPost->name }}</div>
@@ -539,7 +539,7 @@ $i=1;
                             @foreach($latestPost->where('recommended',1) as $featured)
                                 <div class="media mb30-list bg-body ">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
-                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->title }}" class="img-fluid">
                                     </a>
                                     <div class="media-body media-padding15">
                                         <div class="post-date-dark">
@@ -547,7 +547,7 @@ $i=1;
                                                 <li>
                                                         <span>
                                                             <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>{{ date('M d, Y',strtotime($post->updated_at)) }}</li>
+                                                        </span>{{ date('M d, Y',strtotime($featured->updated_at)) }}</li>
                                             </ul>
                                         </div>
                                         <h3 class="title-medium-dark mb-none">
