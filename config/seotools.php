@@ -9,9 +9,9 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Laradevs BD", // set false to total remove
+            'title'        => "LaradevsBD", // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => '', // set false to total remove
+            'description'  => 'laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
@@ -36,11 +36,11 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Laradevs BD', // set false to total remove
-            'description' => '', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
-            'site_name'   => false,
+            'title'       => 'LaradevsBD', // set false to total remove
+            'description' => 'laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo', // set false to total remove
+            'url'         => true, // Set null for using Url::current(), set false to total remove
+            'type'        => true,
+            'site_name'   => true,
             'images'      => [],
         ],
     ],
@@ -58,9 +58,9 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Laradevs BD', // set false to total remove
+            'title'       => 'LaradevsBD', // set false to total remove
             'description' => '', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
+            'url'         => true, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
         ],

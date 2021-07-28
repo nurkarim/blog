@@ -1,7 +1,5 @@
-
 <!doctype html>
 <html class="no-js" lang="">
-
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
@@ -11,7 +9,7 @@
     <meta name="google-site-verification" content="sx_2q7hM5RYz2ENt7N7R7G_8bRblRvHxA7nENHaId9o"/>
     <meta name="yandex-verification" content="1abb94c99b444464"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" type="image/png" href="">
+    <link rel="shortcut icon" type="image/png" href="{{ url('public/img/favicon.png') }}">
     {!! SEO::generate() !!}
     <meta content="https://github.com/nurkarim" property="article:publisher">
     <meta content="https://github.com/nurkarim" property="article:author">

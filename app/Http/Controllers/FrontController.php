@@ -21,16 +21,16 @@ class FrontController extends Controller
 {
     public function index()
     {
-        SEOMeta::addKeyword('laradevsbd of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, HTML, CSS, git, AJAX, bootstrap,  jQuery, JavaScript, Designing, Demo, laradevs bd.');
-        SEOTools::setTitle('Laradevs bd - Tutorial It Language Site | See Demo Example');
-        SEOTools::setDescription('laradevsbd website focuses on all web language and framework tutorial PHP, Laravel, Codeigniter, Nodejs, API, MySQL, AJAX, jQuery, JavaScript, Demo');
+        SEOMeta::addKeyword('laradevsbd.com of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
+        SEOTools::setTitle('Laradevsbd - Blog website artisan helper');
+        SEOTools::setDescription('laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo');
         SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::setCanonical(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::opengraph()->addImage('https://laradevsbd.com/img/logo.jpg');
-        SEOTools::twitter()->setSite(env('APP_URL'));
-        SEOTools::twitter()->setImage('https://laradevsbd.com/img/logo.jpg');
-        SEOTools::jsonLd()->addImage('https://laradevsbd.com/img/logo.jpg');
+        SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo.png');
+        SEOTools::twitter()->setSite('https://laradevsbd.com');
+        SEOTools::twitter()->setImage('https://laradevsbd.com/public/img/logo.png');
+        SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo.png');
 
         $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
         $latestPostTopRight=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(4)->get();
