@@ -24,8 +24,8 @@ class FrontController extends Controller
     public function index()
     {
         SEOTools::setTitle('Blog website artisan helper');
-        SEOTools::setDescription('laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo');
-        SEOMeta::addKeyword('laradevsbd.com of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
+        SEOTools::setDescription('website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo');
+        SEOMeta::addKeyword('programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
         SEOTools::opengraph()->setUrl('https://laradevsbd.com');
         SEOTools::setCanonical('https://www.laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
