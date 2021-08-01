@@ -10,7 +10,7 @@
                         <div class="position-relative mb-30">
                             <img
                                 src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->original_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                alt="news-details" class="img-fluid">
+                                alt="{{ $post->slug }}" class="img-fluid">
                             <div class="topic-box-top-sm">
                                 <div class="topic-box-sm color-cinnabar mb-20">{{ @$post->category->name }}</div>
                             </div>
@@ -33,6 +33,12 @@
                             <li>
                                 <a href="#">
                                     <i class="fa fa-comments" aria-hidden="true"></i>{{ $post->total_comment }}</a>
+                            </li>
+                            <li>
+                                <div class="fb-share-button"
+                                     data-href="https://laradevsbd.com/story/{{ $post->slug }}"
+                                     data-layout="button_count">
+                                </div>
                             </li>
                         </ul>
                         <p>{!! $post->content !!}</p>
@@ -245,7 +251,7 @@
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
                                         <img
                                             src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                            alt="news" class="img-fluid">
+                                            alt="{{ $featured->slug }}" class="img-fluid">
                                     </a>
                                     <div class="media-body media-padding15">
                                         <div class="post-date-dark">
@@ -290,7 +296,7 @@
                             @foreach($latestPost->where('featured',1) as $featured)
                                 <div class="media mb30-list bg-body ">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
-                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="news" class="img-fluid">
+                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->slug }}" class="img-fluid">
                                     </a>
                                     <div class="media-body media-padding15">
                                         <div class="post-date-dark">

@@ -14,7 +14,7 @@ return [
             'description'  => 'laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => false, // Set null for using Url::current(), set false to total remove
+            'canonical'    => true, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -38,7 +38,7 @@ return [
         'defaults' => [
             'title'       => 'LaradevsBD', // set false to total remove
             'description' => 'laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo', // set false to total remove
-            'url'         => true, // Set null for using Url::current(), set false to total remove
+            'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => true,
             'site_name'   => true,
             'images'      => [],

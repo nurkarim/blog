@@ -9,7 +9,7 @@
                         <div class="bend niceties preview-1">
                             <div id="ensign-nivoslider-3" class="slides">
                                 @foreach($latestPostTop as $slider)
-                                <img src="@if(isset($slider->imageGallery)) {{ url('public') }}/{{$slider->imageGallery->big_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="slider" title="#slider-direction-{{ $slider->id }}" />
+                                <img src="@if(isset($slider->imageGallery)) {{ url('public') }}/{{$slider->imageGallery->big_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $slider->slug }}" title="#slider-direction-{{ $slider->id }}" />
                                 @endforeach
                             </div>
                             @foreach($latestPostTop as $slider)
@@ -44,7 +44,7 @@
                             @foreach($latestPostTopRight as $post)
                             <div class="media mb-30 col-xl-12 col-lg-6 col-md-6 col-sm-12">
                                 <a class="img-opacity-hover" href="{{ url('story',$post->slug) }}">
-                                    <img style="height: 80px;width: 118px;" src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
+                                    <img  src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->slug }}" class="img-fluid left_right_section_img">
                                 </a>
                                 <div class="media-body media-padding5">
                                     <div class="post-date-dark">
@@ -114,7 +114,7 @@ $i=1;
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="img-overlay-70 img-scale-animate mb-30">
                                                         <a href="{{ url('story',$catPost->slug) }}">
-                                                            <img src="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->big_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $catPost->title }}" class="img-fluid width-100">
+                                                            <img src="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->big_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $catPost->slug }}" class="img-fluid width-100">
                                                         </a>
                                                         <div class="mask-content-lg">
                                                             <div class="topic-box-sm color-cinnabar mb-20">{{ $sub_catPost->name }}</div>
@@ -150,7 +150,7 @@ $i=1;
                                                                href="{{ url('story',$catPost->slug) }}">
                                                                 <img
                                                                     data-original="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                                                    alt="{{ $catPost->title }}" class="img-fluid">
+                                                                    alt="{{ $catPost->slug }}" class="img-fluid">
                                                             </a>
                                                             <div class="media-body">
                                                                 <div class="post-date-dark">
@@ -184,7 +184,7 @@ $i=1;
                                                     <a href="{{ $primarySection->ads->ad_url }}" target="_blank">
                                                         <img
                                                             data-original="@if(isset($primarySection->ads)) {{ url('public') }}/{{$primarySection->ads->ad_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                                            alt="ad" class="img-fluid">
+                                                            alt="ads" class="img-fluid">
                                                     </a>
                                                 @elseif($primarySection->ads->ad_type=='text')
                                                     {!! $primarySection->ads->ad_text !!}
@@ -220,7 +220,7 @@ $i=1;
                                                 </div>
                                                 <img
                                                     data-original="@if(isset($catPost->imageGallery)) {{ url('public') }}/{{$catPost->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                                    alt="{{ $catPost->title }}" class="img-fluid width-100">
+                                                    alt="{{ $catPost->slug }}" class="img-fluid width-100">
                                             </div>
                                         </div>
                                     @endforeach
@@ -339,7 +339,7 @@ $i=1;
                                 </div>
                                 <img
                                     data-original="@if(isset($scatPost->imageGallery)) {{ url('public') }}/{{$scatPost->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                    alt="{{ $scatPost->title }}" class="img-fluid width-100">
+                                    alt="{{ $scatPost->slug }}" class="img-fluid width-100">
                             </div>
                             @if($key==0)
                                 <?php
@@ -353,7 +353,7 @@ $i=1;
                                 <a class="img-opacity-hover" href="{{ url('story',$scatPost1->slug) }}l">
                                     <img
                                         data-original="@if(isset($scatPost1->imageGallery)) {{ url('public') }}/{{$scatPost1->imageGallery->small_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                        alt="{{ $scatPost1->title }}" class="img-fluid">
+                                        alt="{{ $scatPost1->slug }}" class="img-fluid">
                                 </a>
                                 <div class="media-body">
                                     <div class="post-date-dark">
@@ -383,7 +383,7 @@ $i=1;
                                         <a href="{{ $centerSection->ads->ad_url }}" target="_blank">
                                             <img
                                                 data-original="@if(isset($centerSection->ads)) {{ url('public') }}/{{$centerSection->ads->ad_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                                alt="ad" class="img-fluid">
+                                                alt="ads" class="img-fluid">
                                         </a>
                                     @elseif($centerSection->ads->ad_type=='text')
                                         {!! $centerSection->ads->ad_text !!}
@@ -440,7 +440,7 @@ $i=1;
                                                 <a class="img-opacity-hover" href="{{ url('story',$scatPost->slug) }}">
                                                     <img
                                                         data-original="@if(isset($scatPost->imageGallery)) {{ url('public') }}/{{$scatPost->imageGallery->medium_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
-                                                        alt="{{ $scatPost->title }}" class="img-fluid width-100 mb-15">
+                                                        alt="{{ $scatPost->slug }}" class="img-fluid width-100 mb-15">
                                                 </a>
                                                 <div class="topic-box-top-xs">
                                                     <div
@@ -476,7 +476,7 @@ $i=1;
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-12 mb-30">
-                    <div class="ie-full-width" style="background: transparent">
+                    <div class="ie-full-width ie-full-custom">
                         <div class="topic-border color-cinnabar mb-30">
                             <div class="topic-box-lg color-cinnabar">Latest POST</div>
                         </div>
@@ -486,14 +486,14 @@ $i=1;
                                 <div class="media media-none--md mb-30  bg-white">
                                     <div class="position-relative width-40">
                                         <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover">
-                                            <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->title }}" class="img-fluid">
+                                            <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->slug }}" class="img-fluid">
                                         </a>
                                         <div class="topic-box-top-xs">
                                             <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
                                         </div>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
-                                        <h3 class="title-semibold-dark size-lg mb-5" style="margin-top: 10px">
+                                        <h3 class="title-semibold-dark size-lg mb-5 mt-5">
                                             <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a>
                                         </h3>
                                         <div class="post-date-dark">
@@ -539,7 +539,7 @@ $i=1;
                             @foreach($latestPost->where('recommended',1) as $featured)
                                 <div class="media mb30-list bg-body ">
                                     <a class="img-opacity-hover" href="{{ url('story',$featured->slug) }}">
-                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->title }}" class="img-fluid">
+                                        <img src="@if(isset($featured->imageGallery)) {{ url('public') }}/{{$featured->imageGallery->thumbnail}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $featured->slug }}" class="img-fluid">
                                     </a>
                                     <div class="media-body media-padding15">
                                         <div class="post-date-dark">

@@ -17,15 +17,17 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use LaravelLocalization;
 use App\CustomClasses\SettingsHelper;
+use Spatie\Sitemap\SitemapGenerator;
+
 class FrontController extends Controller
 {
     public function index()
     {
-        SEOMeta::addKeyword('laradevsbd.com of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
-        SEOTools::setTitle('Laradevsbd - Blog website artisan helper');
+        SEOTools::setTitle('Blog website artisan helper');
         SEOTools::setDescription('laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo');
-        SEOTools::opengraph()->setUrl(env('APP_URL'));
-        SEOTools::setCanonical(env('APP_URL'));
+        SEOMeta::addKeyword('laradevsbd.com of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
+        SEOTools::opengraph()->setUrl('https://laradevsbd.com');
+        SEOTools::setCanonical('http://laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo.png');
         SEOTools::twitter()->setSite('https://laradevsbd.com');
@@ -50,7 +52,7 @@ class FrontController extends Controller
         SEOTools::opengraph()->setUrl($url);
         SEOTools::setCanonical($url);
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite(env('APP_URL'));
+        SEOTools::twitter()->setSite($url);
         $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(30);
 
         //https://github.com/artesaos/seotools
@@ -60,14 +62,22 @@ class FrontController extends Controller
     public function details($slug)
     {
         $post=Post::query()->with(['category','subcategory','imageGallery','user','comment'])->where('slug',$slug)->firstOrFail();
-        $url=url('/story',$slug);
-        SEOMeta::addKeyword($post->meta_keywords);
-        SEOTools::setTitle($post->title);
-        SEOTools::setDescription($post->meta_description);
-        SEOTools::opengraph()->setUrl($url);
+        $url=url('story').'/'.$slug;
+        if(isset($post->imageGallery)){
+            $image=url('public').'/'.$post->imageGallery->og_image;
+        }else{
+            $image=url('public/default-image/default-100x100.png');
+        }
+
         SEOTools::setCanonical($url);
+        SEOTools::setTitle($post->title);
+        SEOTools::setDescription($post->meta_description??$post->sub_content);
+        SEOMeta::addKeyword($post->meta_keywords??'laravel,laravel 8,laravel 7,php,javascript,jquery,ajax');
+        SEOTools::opengraph()->setUrl($url);
+        SEOTools::opengraph()->setSiteName('laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite(env('APP_URL'));
+        SEOTools::opengraph()->addImage($image);
+        SEOTools::twitter()->setSite($url);
         $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('id','!=',$post->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(6)->get();
         $post->update(
            [ 'total_view'=>$post->total_view+1]
