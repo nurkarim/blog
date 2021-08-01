@@ -18,6 +18,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    RewriteCond %{HTTP_HOST} ^www\.laradevsbd\.com$
+    RewriteRule ^/?$ "https\:\/\/laradevsbd\.com\/" [R=301,L]
 </IfModule>
 
 <Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
