@@ -15,7 +15,7 @@
                                 <div class="topic-box-sm color-cinnabar mb-20">{{ @$post->category->name }}</div>
                             </div>
                         </div>
-                        <h2 class="title-semibold-dark size-c30">{{ $post->title }}</h2>
+                        <h1 class="title-medium-dark size-c30">{{ $post->title }}</h1>
                         <ul class="post-info-dark mb-30">
                             <li>
                                 <a href="#">

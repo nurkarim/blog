@@ -26,8 +26,8 @@
                                 </div>
 
                                 <div class="media-body p-mb-none-child media-margin30">
-                                    <h3 class="title-semibold-dark size-lg mb-15 mt-2">
-                                        <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a> </h3>
+                                    <h1 class="title-medium-dark size-lg mb-15 mt-2">
+                                        <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a> </h1>
                                     <div class="post-date-dark">
                                         <ul>
                                             <li>
