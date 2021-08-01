@@ -55,9 +55,9 @@
                                                         </span>{{ date('M d, Y',strtotime($slider->updated_at)) }}</li>
                                         </ul>
                                     </div>
-                                    <h3 class="title-medium-dark size-md mb-none">
+                                    <h1 class="title-medium-dark size-md mb-none">
                                         <a title="{{ $post->title }}" href="{{ url('story',$post->slug) }}">{{ \Illuminate\Support\Str::limit($post->title,43) }}</a>
-                                    </h3>
+                                    </h1>
                                 </div>
                             </div>
                             @endforeach
@@ -493,9 +493,9 @@ $i=1;
                                         </div>
                                     </div>
                                     <div class="media-body p-mb-none-child media-margin30">
-                                       <h1 class="title-medium-dark size-lg mb-5 mt-5">
-                                           <a href="{{ url('story',$post->slug) }}">  {{ $post->title }}</a>
-                                        </h1>
+                                        <h3 class="title-semibold-dark size-lg mb-5" style="margin-top: 10px">
+                                            <a href="{{ url('story',$post->slug) }}">{{ $post->title }}</a>
+                                        </h3>
                                         <div class="post-date-dark">
                                             <ul>
                                                 <li>
@@ -550,9 +550,9 @@ $i=1;
                                                         </span>{{ date('M d, Y',strtotime($featured->updated_at)) }}</li>
                                             </ul>
                                         </div>
-                                        <a href="{{ url('story',$featured->slug) }}">   <h1 class="title-medium-dark mb-none">
-                                            {{ $featured->title }}
-                                        </h1></a>
+                                        <h3 class="title-medium-dark mb-none">
+                                            <a href="{{ url('story',$featured->slug) }}">{{ $featured->title }}</a>
+                                        </h3>
                                     </div>
                                 </div>
                             @endforeach
