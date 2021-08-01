@@ -8,6 +8,7 @@
     <meta name="p:domain_verify" content="f9af85b662cce44b54e98146f7d73d11">
     <meta name="google-site-verification" content="sx_2q7hM5RYz2ENt7N7R7G_8bRblRvHxA7nENHaId9o"/>
     <meta name="yandex-verification" content="1abb94c99b444464"/>
+    <link href="https://www.laradevsbd.com" rel="canonical"/>
     {!! SEO::generate() !!}
     <meta content="https://github.com/nurkarim" property="article:publisher">
     <meta content="https://github.com/nurkarim" property="article:author">
