@@ -27,7 +27,7 @@ class FrontController extends Controller
         SEOTools::setDescription('laradevsbd.com website focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo');
         SEOMeta::addKeyword('laradevsbd.com of it programming language, php, laravel 5, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com');
         SEOTools::opengraph()->setUrl('https://laradevsbd.com');
-        SEOTools::setCanonical('http://laradevsbd.com');
+        SEOTools::setCanonical('https://www.laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo.png');
         SEOTools::twitter()->setSite('https://laradevsbd.com');
