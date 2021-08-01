@@ -27,7 +27,7 @@ class FrontController extends Controller
         SEOTools::setDescription('LaradevsBD focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo,artisan,helper,blog');
         SEOMeta::addKeyword('programming language, php, laravel, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com,artisan,helper,blog');
         SEOTools::opengraph()->setUrl('https://laradevsbd.com');
-        SEOTools::setCanonical('https://www.laradevsbd.com');
+//        SEOTools::setCanonical('https://www.laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo.png');
         SEOTools::twitter()->setSite('https://laradevsbd.com');
@@ -50,7 +50,7 @@ class FrontController extends Controller
         SEOTools::setTitle($category->name);
         SEOTools::setDescription($category->meta_description);
         SEOTools::opengraph()->setUrl($url);
-        SEOTools::setCanonical($url);
+//        SEOTools::setCanonical($url);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($url);
         $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(30);
@@ -69,7 +69,7 @@ class FrontController extends Controller
             $image=url('public/default-image/default-100x100.png');
         }
 
-        SEOTools::setCanonical($url);
+//        SEOTools::setCanonical($url);
         SEOTools::setTitle($post->title);
         SEOTools::setDescription($post->meta_description??$post->sub_content);
         SEOMeta::addKeyword($post->meta_keywords??'laravel,laravel 8,laravel 7,php,javascript,jquery,ajax');
