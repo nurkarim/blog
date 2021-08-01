@@ -8,7 +8,7 @@
 <!-- Bootstrap js -->
 <script src="{{ url('public') }}/js/bootstrap.min.js" type="text/javascript"></script>
 {{--<!-- WOW JS -->--}}
-{{--<script src="{{ url('public') }}/js/wow.min.js"></script>--}}
+<script src="{{ url('public') }}/js/wow.min.js"></script>
 {{--<!-- Owl Cauosel JS -->--}}
 {{--<script src="{{ url('public') }}/vendor/OwlCarousel/owl.carousel.min.js" type="text/javascript"></script>--}}
 <!-- Meanmenu Js -->

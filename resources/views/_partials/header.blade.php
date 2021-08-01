@@ -11,8 +11,8 @@
 <!-- Font-awesome CSS-->
 <link rel="stylesheet" href="{{ url('public') }}/css/font-awesome.min.css">
 <!-- Owl Caousel CSS -->
-<link rel="stylesheet" href="{{ url('public') }}/vendor/OwlCarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="{{ url('public') }}/vendor/OwlCarousel/owl.theme.default.min.css">
+{{--<link rel="stylesheet" href="{{ url('public') }}/vendor/OwlCarousel/owl.carousel.min.css">--}}
+{{--<link rel="stylesheet" href="{{ url('public') }}/vendor/OwlCarousel/owl.theme.default.min.css">--}}
 <!-- Main Menu CSS -->
 <link rel="stylesheet" href="{{ url('public') }}/css/meanmenu.min.css">
 <!-- Nivo Slider CSS-->
