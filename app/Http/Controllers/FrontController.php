@@ -6,18 +6,11 @@ use App\Category;
 use App\Post;
 use App\ThemeSetting;
 use Artesaos\SEOTools\Facades\SEOMeta;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\TwitterCard;
-use Artesaos\SEOTools\Facades\JsonLd;
-// OR with multi
-use Artesaos\SEOTools\Facades\JsonLdMulti;
-
-// OR
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use LaravelLocalization;
 use App\CustomClasses\SettingsHelper;
-use Spatie\Sitemap\SitemapGenerator;
+
 
 class FrontController extends Controller
 {
@@ -33,11 +26,13 @@ class FrontController extends Controller
         SEOTools::twitter()->setSite('https://laradevsbd.com');
         SEOTools::twitter()->setImage('https://laradevsbd.com/public/img/logo.png');
         SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo.png');
-
+        $latestPost=cache()->remember('latest-post',60*60*24,function (){
+            return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(10);
+        });
         $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
         $latestPostTopRight=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(4)->get();
         $primarySections=ThemeSetting::query()->with(['category.post.imageGallery','sub_category','ads'])->orderBy('view_order')->get();
-        $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(20)->get();
+//        $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(20)->get();
         return view('_partials.body',compact('latestPostTop','latestPostTopRight','primarySections','latestPost'));
     }
 
@@ -53,7 +48,7 @@ class FrontController extends Controller
 //        SEOTools::setCanonical($url);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($url);
-        $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(30);
+        $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(10);
 
         //https://github.com/artesaos/seotools
         return view('layouts.category_post',compact('category','data'));

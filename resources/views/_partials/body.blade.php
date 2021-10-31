@@ -527,6 +527,7 @@ $i=1;
                             @endforeach
 
                         </div>
+                        {{ $latestPost->links() }}
                     </div>
                 </div>
                 <div class="ne-sidebar sidebar-break-lg col-xl-4 col-lg-12">
