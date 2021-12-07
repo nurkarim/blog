@@ -26,7 +26,8 @@ class FrontController extends Controller
         SEOTools::twitter()->setSite('https://laradevsbd.com');
         SEOTools::twitter()->setImage('https://laradevsbd.com/public/img/logo.png');
         SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo.png');
-        $latestPost=cache()->remember('latest-post',60*60*24,function (){
+        $currentPage = request()->get('page',1);
+        $latestPost=cache()->remember('latest-post'.$currentPage,60*60*24,function (){
             return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(10);
         });
         $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
