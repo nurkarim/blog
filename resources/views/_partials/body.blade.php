@@ -560,6 +560,8 @@ $i=1;
 
                                 <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=nurkarim7720f-20&marketplace=amazon&amp;region=US&placement=1984880993&asins=1984880993&linkId=b7d5259df08c7b0425f43158451afb93&show_border=false&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff">
                                 </iframe>
+
+                                <iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=11&l=ur1&category=amazonkids&banner=1J2C69A574RJ23GVYE82&f=ifr&linkID=99283e5b55297e1cd7fff7e3ddc1f8c7&t=nurkarim7720f-20&tracking_id=nurkarim7720f-20" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
                         </div>
                     </div>
 
