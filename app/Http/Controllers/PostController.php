@@ -33,31 +33,31 @@ class PostController extends Controller
 
     public function index()
     {
-        $data= Post::query()->where('post_type','article')->paginate(20);
+        $data= Post::query()->where('post_type','article')->latest()->paginate(20);
         return view("back.post.index",compact('data'));
     }
 
     public function allVideoPost()
     {
-        $data= Post::query()->where('post_type','video')->paginate(20);
+        $data= Post::query()->where('post_type','video')->latest()->paginate(20);
         return view("back.post.all_video_post",compact('data'));
     }
 
     public function draftPost()
     {
-        $data= Post::query()->where('status',0)->paginate(20);
+        $data= Post::query()->where('status',0)->latest()->paginate(20);
         return view("back.post.all_draft_post",compact('data'));
     }
 
     public function schedulePost()
     {
-        $data= Post::query()->where('status',2)->paginate(20);
+        $data= Post::query()->where('status',2)->latest()->paginate(20);
         return view("back.post.all_schedule_post",compact('data'));
     }
 
     public function pendingPost()
     {
-        $data= Post::query()->where('post_type','article')->where('visibility',0)->paginate(20);
+        $data= Post::query()->where('post_type','article')->where('visibility',0)->latest()->paginate(20);
         return view("back.post.pending_video_post",compact('data'));
     }
 
