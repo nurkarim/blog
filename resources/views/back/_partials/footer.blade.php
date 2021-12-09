@@ -30,5 +30,6 @@
 <script src="{{ url('public/back/js') }}/tagsinput.js"></script>
 <script src="{{ url('public/back/js') }}/notify.js"></script>
 <script src="{{ url('public/back/js') }}/custom.js"></script>
+<script src="{{ url('public/back/js') }}/nicEdit.js"></script>
 <!-- summernote -->
 
