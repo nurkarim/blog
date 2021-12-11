@@ -121,49 +121,48 @@ class GalleryController extends Controller
 
             elseif(SettingsHelper::settingHelper('default_storage') =='local'):
 
-                Image::make($requestImage)->fit(730, 400)->save($ogImageUrl);
+                //Image::make($requestImage)->fit(730, 400)->save($ogImageUrl);
                 //jpg. jpeg, JPEG, JPG compression
                 if ($fileType == 'jpeg' or $fileType == 'jpg' or $fileType == 'JPEG' or $fileType == 'JPG'):
-                    Image::make(imagecreatefromjpeg($requestImage))->save($originalImageUrl, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->save($originalImageUrl, 70);
 
                     Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
                     Image::make(imagecreatefromjpeg($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
-                    Image::make(imagecreatefromjpeg($requestImage))->fit(124, 88)->save($smallImageUrl, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
+//                    Image::make(imagecreatefromjpeg($requestImage))->fit(124, 88)->save($smallImageUrl, 70);
 
                 //PNG, png compression
                 elseif ($fileType == 'PNG' or $fileType == 'png'):
-                    Image::make(imagecreatefrompng($requestImage))->save($originalImageUrl, 70);
+                   // Image::make(imagecreatefrompng($requestImage))->save($originalImageUrl, 70);
 
                     Image::make(imagecreatefrompng($requestImage))->fit(100, 100)->save($thumbnailImageUrl, 70);
                     Image::make(imagecreatefrompng($requestImage))->fit(1200, 814)->save($bigImageUrl, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
-                    Image::make(imagecreatefrompng($requestImage))->fit(124, 160)->save($smallImageUrl, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(800, 578)->save($bigImageUrlTwo, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(800, 1156)->save($bigImageUrlThree, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(600, 399)->save($mediumImageUrl, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(600, 384)->save($mediumImageUrlTwo, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(300, 226)->save($mediumImageUrlThree, 70);
+//                    Image::make(imagecreatefrompng($requestImage))->fit(124, 160)->save($smallImageUrl, 70);
                 endif;
             endif;
 
 
-            $image->original_image      = str_replace("public/","",$originalImageUrl);
-            $image->og_image            = str_replace("public/","",$ogImageUrl);
+//            $image->original_image      = str_replace("public/","",$originalImageUrl);
+//            $image->og_image            = str_replace("public/","",$ogImageUrl);
             $image->thumbnail           = str_replace("public/","",$thumbnailImageUrl);
             $image->big_image           = str_replace("public/","",$bigImageUrl);
-            $image->big_image_two       = str_replace("public/","",$bigImageUrlTwo);
-            $image->big_image_three       = str_replace("public/","",$bigImageUrlThree);
-            $image->medium_image        = str_replace("public/","",$mediumImageUrl);
-            $image->medium_image_two    = str_replace("public/","",$mediumImageUrlTwo);
-            $image->medium_image_three  = str_replace("public/","",$mediumImageUrlThree);
-            $image->small_image         = str_replace("public/","",$smallImageUrl);
+//            $image->big_image_two       = str_replace("public/","",$bigImageUrlTwo);
+//            $image->big_image_three       = str_replace("public/","",$bigImageUrlThree);
+//            $image->medium_image        = str_replace("public/","",$mediumImageUrl);
+//            $image->medium_image_two    = str_replace("public/","",$mediumImageUrlTwo);
+//            $image->medium_image_three  = str_replace("public/","",$mediumImageUrlThree);
+//            $image->small_image         = str_replace("public/","",$smallImageUrl);
 
             $image->disk                = SettingsHelper::settingHelper('default_storage');
-
             $image->save();
 
             $image                      = GalleryImage::latest()->first();

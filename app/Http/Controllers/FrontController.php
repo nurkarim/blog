@@ -30,11 +30,11 @@ class FrontController extends Controller
         $latestPost=cache()->remember('latest-post'.$currentPage,60*60*24,function (){
             return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(10);
         });
-        $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
-        $latestPostTopRight=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(4)->get();
-        $primarySections=ThemeSetting::query()->with(['category.post.imageGallery','sub_category','ads'])->orderBy('view_order')->get();
+//        $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
+        $latestPostTopRight=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->inRandomOrder()->take(1)->get();
+//        $primarySections=ThemeSetting::query()->with(['category.post.imageGallery','sub_category','ads'])->orderBy('view_order')->get();
 //        $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(20)->get();
-        return view('_partials.body',compact('latestPostTop','latestPostTopRight','primarySections','latestPost'));
+        return view('_partials.body',compact('latestPostTopRight','latestPost'));
     }
 
     public function category($slug)
