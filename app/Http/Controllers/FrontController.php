@@ -18,14 +18,14 @@ class FrontController extends Controller
     {
         SEOTools::setTitle('Laravel Blog website & artisan helper');
         SEOTools::setDescription('LaradevsBD focuses on all web language and framework tutorial PHP, Laravel, API, MySQL, AJAX, jQuery, JavaScript, Demo,artisan,helper,blog');
-        SEOMeta::addKeyword('programming language, php, laravel, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com,artisan,helper,blog');
+        SEOMeta::addKeyword('programming language, php, laravel, jquery, javascript, mysql, git, html, css, MySQL, laradevsbd.com,artisan,helper,blog,laravel auth,laravel api,laravel payment getaway,stripe,paypal,bkash,nogod,ssl,laravel barcode');
         SEOTools::opengraph()->setUrl('https://laradevsbd.com');
 //        SEOTools::setCanonical('https://www.laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo.png');
+        SEOTools::opengraph()->addImage('https://laradevsbd.com/public/img/logo-new.png');
         SEOTools::twitter()->setSite('https://laradevsbd.com');
-        SEOTools::twitter()->setImage('https://laradevsbd.com/public/img/logo.png');
-        SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo.png');
+        SEOTools::twitter()->setImage('https://laradevsbd.com/public/img/logo-new.png');
+        SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo-new.png');
         $currentPage = request()->get('page',1);
         $latestPost=cache()->remember('latest-post'.$currentPage,60*60*24,function (){
             return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(30);
@@ -42,7 +42,7 @@ class FrontController extends Controller
 
         $category=Category::query()->where('slug',$slug)->first();
         $url=url('/category',$slug);
-        SEOMeta::addKeyword($category->meta_keywords);
+        SEOMeta::addKeyword($category->meta_keywords.' laravel auth,laravel api,laravel payment getaway,stripe,paypal,bkash,nogod,ssl,laravel barcode');
         SEOTools::setTitle($category->name);
         SEOTools::setDescription($category->meta_description);
         SEOTools::opengraph()->setUrl($url);
@@ -68,7 +68,7 @@ class FrontController extends Controller
 //        SEOTools::setCanonical($url);
         SEOTools::setTitle($post->title);
         SEOTools::setDescription($post->meta_description??$post->sub_content);
-        SEOMeta::addKeyword($post->meta_keywords??'laravel,laravel 8,laravel 7,php,javascript,jquery,ajax');
+        SEOMeta::addKeyword($post->meta_keywords.' laravel,laravel 8,laravel 7,php,javascript,jquery,ajax,laravel auth,laravel api,laravel payment getaway,stripe,paypal,bkash,nogod,ssl,laravel barcode');
         SEOTools::opengraph()->setUrl($url);
         SEOTools::opengraph()->setSiteName('laradevsbd.com');
         SEOTools::opengraph()->addProperty('type', 'articles');
