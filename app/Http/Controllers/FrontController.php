@@ -28,7 +28,7 @@ class FrontController extends Controller
         SEOTools::jsonLd()->addImage('https://laradevsbd.com/public/img/logo.png');
         $currentPage = request()->get('page',1);
         $latestPost=cache()->remember('latest-post'.$currentPage,60*60*24,function (){
-            return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(10);
+            return Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->paginate(30);
         });
 //        $latestPostTop=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('slider',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(10)->get();
         $latestPostTopRight=Post::query()->with(['category','subcategory','imageGallery','user'])->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->inRandomOrder()->take(1)->get();
@@ -49,7 +49,7 @@ class FrontController extends Controller
 //        SEOTools::setCanonical($url);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($url);
-        $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(10);
+        $data=Post::query()->with(['category','subcategory','imageGallery','user'])->where('category_id',$category->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? SettingsHelper::settingHelper('default_language'))->latest()->paginate(30);
 
         //https://github.com/artesaos/seotools
         return view('layouts.category_post',compact('category','data'));
@@ -74,7 +74,7 @@ class FrontController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::opengraph()->addImage($image);
         SEOTools::twitter()->setSite($url);
-        $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('id','!=',$post->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(6)->get();
+        $latestPost=Post::query()->with(['category','subcategory','imageGallery','user'])->where('id','!=',$post->id)->where('post_type','article')->where('visibility',1)->where('language', LaravelLocalization::setLocale() ?? 'en')->latest()->take(20)->get();
         $post->update(
            [ 'total_view'=>$post->total_view+1]
         );
