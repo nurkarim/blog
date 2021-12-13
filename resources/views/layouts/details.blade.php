@@ -9,7 +9,7 @@
                     <div class="news-details-layout1">
                         <div class="position-relative mb-30">
                             <img
-                                src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->original_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
+                                src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->big_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif"
                                 alt="{{ $post->slug }}" class="img-fluid">
                             <div class="topic-box-top-sm">
                                 <div class="topic-box-sm color-cinnabar mb-20">{{ @$post->category->name }}</div>
