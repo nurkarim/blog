@@ -18,7 +18,7 @@
                             <div class="media media-none--lg mb-30 bg-white">
                                 <div class="position-relative width-40">
                                     <a href="{{ url('story',$post->slug) }}" class="img-opacity-hover img-overlay-70">
-                                        <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->medium_image_three}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->slug }}" class="img-fluid">
+                                        <img src="@if(isset($post->imageGallery)) {{ url('public') }}/{{$post->imageGallery->big_image}}  @else {{ url('public/default-image/default-100x100.png') }} @endif" alt="{{ $post->slug }}" class="img-fluid">
                                     </a>
                                     <div class="topic-box-top-xs">
                                         <div class="topic-box-sm color-cod-gray mb-20">{{ @$post->category->name }}</div>
