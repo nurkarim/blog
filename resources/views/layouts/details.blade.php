@@ -288,6 +288,17 @@
                             </div>
                         </div>
                     </div>
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5890317501545816"
+                            crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-h1+w-3s-ct+11w"
+                         data-ad-client="ca-pub-5890317501545816"
+                         data-ad-slot="5399453763"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                     <div class="sidebar-box">
                         <div class="topic-border color-cod-gray mb-30">
                             <div class="topic-box-lg color-cod-gray">Featured Post</div>
@@ -346,3 +357,4 @@
 
 
 @endsection
+
