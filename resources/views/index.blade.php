@@ -170,9 +170,9 @@
                     <li><a href="/" class="menu-link">Home</a></li>
                     <li><a href="#" class="menu-link">List Of Categories</a>
                     </li>
-                    <li><a href="#" class="menu-link">List of Tags</a></li>
+                    <li><a href="{{ route('page','privacy-policy') }}" class="menu-link">Privacy & Policy</a></li>
                     <li><a href="#" class="menu-link">Disclaimer</a></li>
-                    <li><a href="#" class="menu-link">Latest Posts</a></li>
+                    <li><a href="{{ route('page','terms-conditions') }}" class="menu-link">Terms & Condition</a></li>
                     <li><a href="#" class="menu-link">Contact US</a></li>
                     <li><a href="#" class="menu-link">About US</a></li>
                 </ul>

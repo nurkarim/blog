@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Page;
 use App\Post;
 use App\ThemeSetting;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -55,6 +56,8 @@ class FrontController extends Controller
         return view('layouts.category_post',compact('category','data'));
     }
 
+
+
     public function details($slug)
     {
         $post=Post::query()->with(['category','subcategory','imageGallery','user','comment'])->where('slug',$slug)->firstOrFail();
@@ -80,6 +83,12 @@ class FrontController extends Controller
         );
         //https://github.com/artesaos/seotools
         return view('layouts.details',compact('post','latestPost'));
+    }
+
+    public function page($slug)
+    {
+        $page=Page::query()->where('slug',$slug)->firstOrFail();
+        return view('layouts.page',compact('page'));
     }
 
 }
